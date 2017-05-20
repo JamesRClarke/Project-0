@@ -1,3 +1,99 @@
+*{
+  box-sizing: border-box;
+}
+
 body {
-  background: red;
+background-color: white;
+}
+
+header {
+  background-color: green;
+}
+header h1 {
+  color: black;
+  text-align: center;
+}
+main {
+  width: 1400px;
+  height: 1000px;
+  margin: 0 auto;
+  margin-top: 150px;
+
+
+  div.features {
+    margin: 0 auto;
+    border: 3px solid red;
+    width: 1200px;
+    height: 800px;
+    background-color: blue;
+
+    div.options {
+      display: inline-block;
+      color: yellow;
+
+    }
+
+      input {
+       margin: 0 auto;
+        text-align: center;
+        width: 500px;
+        height: 50px;
+        font-size: 40px;
+      }
+  }
+
+
+  div.ag-tetris {
+    color: white;
+    position: relative;
+    margin-top: 2000px;
+    margin: 0 auto;
+    border: 3px solid red;
+    width: 800px;
+    height: 550px;
+    background-color: black;
+  }
+  #anagram1 {
+    position: absolute;
+    top: -50px;
+  }
+  #anagram2 {
+    position: absolute;
+    top: -50px;
+    left: 60px;
+  }
+  #anagram3 {
+    position: absolute;
+    top: -50px;
+  }
+  #anagram4 {
+    position: absolute;
+    top: -50px;
+  }
+  #anagram5 {
+    position: absolute;
+    top: -50px;
+  }
+  #anagram6 {
+    position: absolute;
+    top: -50px;
+  }
+  #anagram7 {
+    position: absolute;
+    top: -50px;
+  }
+  #anagram8 {
+    position: absolute;
+    top: -50px;
+  }
+  #anagram9 {
+    position: absolute;
+    top: -50px;
+  }
+  #anagram10 {
+    position: absolute;
+    top: -50px;
+  }
+
+
 }

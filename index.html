@@ -3,10 +3,71 @@
 <head>
   <meta charset="UTF-8">
   <title>Project 0</title>
+  <script
+  src="https://code.jquery.com/jquery-3.2.1.min.js"
+  integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+  crossorigin="anonymous"></script>
   <script src="public/js/app.js" charset="utf-8"></script>
   <link rel="stylesheet" href="public/css/main.css">
+  <!-- <link rel="stylesheet" href="css/animate.css"> -->
 </head>
 <body>
-  <h1>Project 0</h1>
+
+  <header>
+    <h1>Anagram Falls</h1>
+
+  </header>
+  <main>
+
+    <div class="features">
+      <div class="options">
+        <p>Subjects</p>
+        <select id="subject-options" name="subject-options">
+           <option selected disabled >Please Choose</option>
+          <option id ="BBT" value="$BBT">Big Bang Theory</option>
+          <option value="$LOTR">Lord Of The Rings</option>
+          <option value="$EPL">EPL Football Teams</option>
+          <option value="$ASIA">Asian Countries</option>
+          <option value="$WDI">Web Development</option>
+        </select>
+
+        <p>Difficulty</p>
+
+        <select id="difficulty-options" name="difficulty-options">
+          <option selected disabled>Please Choose</option>
+          <option id="easy" value="easy">Easy</option>
+          <option id="medium" value="medium">Medium</option>
+          <option id="hard" value="hard">Hard</option>
+          <option id="insane" value="insane">Are You Insane ?</option>
+        </select>
+
+        <button id="play">PLAY!</button>
+      </div>
+
+
+      <div class="ag-tetris">
+        <p id="anagram1"></p>
+        <p id="anagram2"></p>
+        <p id="anagram3"></p>
+        <p id="anagram4"></p>
+        <p id="anagram5"></p>
+        <p id="anagram6"></p>
+        <p id="anagram7"></p>
+        <p id="anagram8"></p>
+        <p id="anagram9"></p>
+        <p id="anagram10"></p>
+      </div>
+      <form>
+          <input id="answer" type="text" placeholder="Answer" >
+          <input id="submit" type="button">
+      </form>
+      </div>
+
+
+
+  </main>
+
+
+
 </body>
 </html>
