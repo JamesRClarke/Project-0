@@ -3,7 +3,6 @@ $(() => {
   const $playGame = $('#play');
   const $inputByUser = $('#answer');
 
-
   const $anagram1 = $('#anagram1');
   const $anagram2 = $('#anagram2');
   const $anagram3 = $('#anagram3');
@@ -22,65 +21,63 @@ $(() => {
   let $WDI = $('#WDI').val();
 
   let $EASY = $('#easy').val();
-  let $medium = $('#medium').val();
-  let $hard = $('#hard').val();
-  let $insane = $('#insane').val();
+  let $MEDIUM = $('#medium').val();
+  let $HARD = $('#hard').val();
+  let $INSANE = $('#insane').val();
 
   $BBT = ['sheldon','leanord','spock','cheescake factory','howard','raj','star trek','penny','amy','bernadette','physics','laundry','halo night','dumplings', 'brisket','nasa','string theory','dark matter', 'comiccon'];
 
-
-  $LOTR = ['arragon', 'gimli', 'gandalf'];
-
-
+  $LOTR = ['arragon', 'gimli'];
 
   // let currentScore = 0;
   // let highScore = 0;
 
 
+  ////////////////////Selectors///////////////////////////
   let selectedDifficulty = null;
   let selectedSubject = null;
 
-  ////////////////////Selectors///////////////////////////
   $('#subject-options').on('change', function() {
     selectedSubject = $('#subject-options option:checked').val();
     switch (selectedSubject){
       case '$BBT':
-        selectedSubject = $BBT;
-        break;
+      selectedSubject = $BBT;
+      break;
       case '$LOTR':
-        selectedSubject = $LOTR;
-        break;
+      selectedSubject = $LOTR;
+      break;
       case '$EPL':
-        selectedSubject = $EPL;
-        break;
+      selectedSubject = $EPL;
+      break;
       case '$WDI':
-        selectedSubject = $WDI;
-        break;
+      selectedSubject = $WDI;
+      break;
       case '$ASIA':
-        selectedSubject = $ASIA;
-        break;
+      selectedSubject = $ASIA;
+      break;
       default:
-        alert('AAAAAAAAAHHHHHHH!!!!!!');
+      alert('AAAAAAAAAHHHHHHH!!!!!!');
 
     }
   });
+
   $('#difficulty-options').on('change', function() {
     selectedDifficulty = $('#difficulty-options option:checked').val();
     switch (selectedDifficulty){
       case 'easy':
-        selectedDifficulty = $easy;
-        break;
+      selectedDifficulty = $EASY;
+      break;
       case 'medium':
-        selectedDifficulty = $medium;
-        break;
+      selectedDifficulty = $MEDIUM;
+      break;
       case 'hard':
-        selectedDifficulty = $hard;
-        break;
+      selectedDifficulty = $HARD;
+      break;
       case 'insane':
-        selectedDifficulty = $insane;
-        break;
+      selectedDifficulty = $INSANE;
+      break;
       default:
-        alert('AAAAAAAAHHHHH!!!!!');
+      alert('AAAAAAAAHHHHH!!!!!');
     }
   });
   ////////////////////Selectors///////////////////////////
@@ -88,16 +85,23 @@ $(() => {
   $playGame.on('click', function(){
     console.log('heyo!');
     //// This stores the selected subject and randomises the choice of words in the array the subject chosen refers to.
+    function wordGenerator (a) {
+      for (let i = 0; i > 6; i++){
+        a[Math.floor(Math.random() * a.length)];
+      }
+    }
+    console.log(wordGenerator(selectedSubject));
 
 
     /// These are the difficulty settings chosen by the user split into different functions ...
     function difficultyEasy (x){
       setInterval(function() {
-        $anagram1.text(x[Math.floor(Math.random() * x.length)]).css('top', '+=10px');
+        $anagram1.text(x).css('top', '+=10px');
         console.log('heyyoo!');
       },2000);
     }
     difficultyEasy(selectedSubject);
+    // difficultyEasy(selectedSubject);
 
     //   function medium (){
     //     setInterval(function() {
@@ -118,6 +122,7 @@ $(() => {
     //       $anagram1.text(selectedSubject).css('top', '+=50px');
     //     },1000);
     //   }
+
   });
   /// Difficulty selections ends here.
 
@@ -151,6 +156,14 @@ $(() => {
     }
   });
 
+
+  // const Subjects = {
+  //   BBT: ['sheldon','leanord','spock','cheescake factory','howard','raj','star trek','penny','amy','bernadette','physics','laundry','halo night','dumplings', 'brisket','nasa','string theory','dark matter', 'comiccon'],
+  //   LOTR: ['arragon', 'gimli'],
+  //   EPL: ['arsenal', 'everton'],
+  //   ASIA: ['thailand', 'vietnam', 'india'],
+  //   WDI: ['function','object','homebrew','jquery','const','this']
+  // };
 
 
   //restart button
@@ -206,3 +219,11 @@ $(() => {
 // annoying music to put people off or music which relates to theme that has been chosen
 
 // dependent on the subject chosen the look of the game wil differ so a 'theme'
+
+
+
+
+class Subject {
+
+
+}
