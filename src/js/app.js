@@ -79,46 +79,57 @@ $(() => {
   ////////////////////Selectors///////////////////////////
 
 
+  ////The next two sets of JavaScript work however need to store them inside functions and call them when needed as i dont want the logic inside this function.
+  //// selects a random word from the selected array
 
+
+  //////////Up to here//////
+  //////////////////////////WORKING CODE//////////////////////////////////////
   /// function that takes the anagram and moves it down the screen
   let interval = false;
   function difficultyEasy (){
-    //// selects a random word from the selected array
-    console.log( selectedSubject = selectedSubject[Math.floor(Math.random() * selectedSubject.length)]);
+
+
+    selectedSubject = selectedSubject[Math.floor(Math.random() * selectedSubject.length)];
+
+    console.log(selectedSubject);
 
     /// this scrambles the word into an anagram
     const scrambledWord =  selectedSubject.split('').sort(function(){
       return 0.5 - Math.random();
     } ).join('');
-
-
     interval = setInterval(function() {
       $anagram1.text(scrambledWord).css('top', '+=10px');
     },2000);
   }
 
-  /// function that stops and animates a correctly guesses answer
-  ////WORKING CODE
-
   //current score of the player
+  let lifeScore = 5;
   let currentScore = 0;
   //code validation of anagram
-  ///WORKING CODE
+  /// function that stops and animates a correctly guesses answer
+  //////////////////////////WORKING CODE//////////////////////////////////////
   $('#submit').on('click', function () {
     if($('#answer').val() === selectedSubject){
+
       $anagram1.text(selectedSubject).css('display','hidden');
-      currentScore =+selectedSubject.length;
+
+    console.log(  currentScore = currentScore + selectedSubject.length);
+
       $anagram1.addClass('animated fadeOutLeft').css('color','green');
+
       clearInterval(interval);
     } else {
       $anagram1.addClass('animated wobble').css('color','red');
+      console.log( lifeScore = lifeScore -1);
     }
   }
 );
-
 $playGame.on('click', function(){
   difficultyEasy();
-
+  setInterval(function(){
+    difficultyEasy();
+  },10000);
 });
 
 
