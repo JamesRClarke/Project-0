@@ -25,13 +25,9 @@ $(() => {
   let $HARD = $('#hard').val();
   let $INSANE = $('#insane').val();
 
-  $BBT = ['sheldon','leanord','spock','cheescakefactory','howard','startrek','penny','koothrapoli','bernadette','physics','laundry','halonight','dumplings', 'brisket','nasa','stringtheory','darkmatter', 'comiccon','comicbook'];
+  $BBT = ['sheldon','leanord','spock','cheesecakefactory','howard','startrek','penny','koothrapoli','bernadette','physics','laundry','halonight','dumplings', 'brisket','nasa','stringtheory','darkmatter', 'comiccon','comicbook'];
 
   $LOTR = ['arragon', 'gimli'];
-
-  // let currentScore = 0;
-  // let highScore = 0;
-
 
   ////////////////////Selectors///////////////////////////
   let selectedDifficulty = null;
@@ -56,7 +52,7 @@ $(() => {
       selectedSubject = $ASIA;
       break;
       default:
-      alert('AAAAAAAAAHHHHHHH!!!!!!');
+      console.log('WOOOHOO');
 
     }
   });
@@ -77,84 +73,63 @@ $(() => {
       selectedDifficulty = $INSANE;
       break;
       default:
-      alert('AAAAAAAAHHHHH!!!!!');
+      console.log('WOOOHOO');
     }
   });
   ////////////////////Selectors///////////////////////////
 
-  $playGame.on('click', function(){
-    console.log('heyo!');
-    //// This stores the selected subject and randomises the choice of words in the array the subject chosen refers to.
 
 
-    ///This chooses a random word from the array that selectedSubject is.
-    selectedSubject = selectedSubject[Math.floor(Math.random() * selectedSubject.length)];
+  /// function that takes the anagram and moves it down the screen
+  let interval = false;
+  function difficultyEasy (){
+    //// selects a random word from the selected array
+    console.log( selectedSubject = selectedSubject[Math.floor(Math.random() * selectedSubject.length)]);
+
+    /// this scrambles the word into an anagram
+    const scrambledWord =  selectedSubject.split('').sort(function(){
+      return 0.5 - Math.random();
+    } ).join('');
 
 
-    //current score of the player
-    let currentScore = 0;
-    //code validation of anagram
-    $('#submit').on('click', function () {
-      if($('#answer').val() === selectedSubject){
-        $anagram1.text(selectedSubject).css('display','hidden');
-        currentScore = +selectedSubject.length;
-        $anagram1.addClass('animated fadeOutLeft').css('color','green');
-        console.log(currentScore);
-        console.log('working');
+    interval = setInterval(function() {
+      $anagram1.text(scrambledWord).css('top', '+=10px');
+    },2000);
+  }
 
-      } else {
-        $anagram1.addClass('animated wobble').css('color','red');
-      }
+  /// function that stops and animates a correctly guesses answer
+  ////WORKING CODE
+
+  //current score of the player
+  let currentScore = 0;
+  //code validation of anagram
+  ///WORKING CODE
+  $('#submit').on('click', function () {
+    if($('#answer').val() === selectedSubject){
+      $anagram1.text(selectedSubject).css('display','hidden');
+      currentScore =+selectedSubject.length;
+      $anagram1.addClass('animated fadeOutLeft').css('color','green');
+      clearInterval(interval);
+    } else {
+      $anagram1.addClass('animated wobble').css('color','red');
     }
-  );
+  }
+);
 
-
-  /// this scrambles the word into an anagram
-  let scrambledWord = null;
-  scrambledWord =  selectedSubject.split('').sort(function(){
-    return 0.5 - Math.random();
-  } ).join('');
-
-
-  /// These are the difficulty settings chosen by the user split into different functions ...
-    function difficultyEasy (){
-      const interval = setInterval(function() {
-        $anagram1.text(scrambledWord).css('top', '+=10px');
-        console.log('heyyoo!');
-        if($('#answer').val() === selectedSubject){
-          clearInterval(interval);
-          console.log('yeas James!');
-        }
-      },2000);
-    }
-
-  difficultyEasy(selectedSubject);
-  // difficultyEasy(selectedSubject);
-
-  //   function medium (){
-  //     setInterval(function() {
-  //       $anagram1.text(selectedSubject).css('top', '+=25px');
-  //     },2000);
-  //   }
-  //   // Medium();
-  //
-  //   function hard (){
-  //     setInterval(function() {
-  //       $anagram1.text(selectedSubject).css('top', '+=35px');
-  //     },1500);
-  //   }
-  //
-  //   // Hard();
-  //   function insane (){
-  //     setInterval(function() {
-  //       $anagram1.text(selectedSubject).css('top', '+=50px');
-  //     },1000);
-  //   }
+$playGame.on('click', function(){
+  difficultyEasy();
 
 });
+
+
+
+/// These are the difficulty settings chosen by the user split into different functions ...
+
+
+// difficultyEasy(selectedSubject);
+
+
 /// Difficulty selections ends here.
-
-
 
 
 // JavaScript
@@ -177,45 +152,11 @@ $(() => {
 //use, to lower case, incase they type in with any capital letters so the strings will match
 
 
-
-
-
-// const Subjects = {
-//   BBT: ['sheldon','leanord','spock','cheescake factory','howard','raj','star trek','penny','amy','bernadette','physics','laundry','halo night','dumplings', 'brisket','nasa','string theory','dark matter', 'comiccon'],
-//   LOTR: ['arragon', 'gimli'],
-//   EPL: ['arsenal', 'everton'],
-//   ASIA: ['thailand', 'vietnam', 'india'],
-//   WDI: ['function','object','homebrew','jquery','const','this']
-// };
-
-
 //restart button
 // but doesn't restart the highscore
 
 
 });
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -242,11 +183,3 @@ $(() => {
 // annoying music to put people off or music which relates to theme that has been chosen
 
 // dependent on the subject chosen the look of the game wil differ so a 'theme'
-
-
-
-
-class Subject {
-
-
-}
