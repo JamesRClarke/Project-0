@@ -25,7 +25,7 @@ $(() => {
   let $HARD = $('#hard').val();
   let $INSANE = $('#insane').val();
 
-  $BBT = ['sheldon','leanord','spock','cheescake factory','howard','raj','star trek','penny','amy','bernadette','physics','laundry','halo night','dumplings', 'brisket','nasa','string theory','dark matter', 'comiccon'];
+  $BBT = ['sheldon','leanord','spock','cheescakefactory','howard','raj','startrek','penny','amy','bernadette','physics','laundry','halonight','dumplings', 'brisket','nasa','stringtheory','darkmatter', 'comiccon','comicbook'];
 
   $LOTR = ['arragon', 'gimli'];
 
@@ -85,21 +85,37 @@ $(() => {
   $playGame.on('click', function(){
     console.log('heyo!');
     //// This stores the selected subject and randomises the choice of words in the array the subject chosen refers to.
-    function wordGenerator (a) {
-      for (let i = 0; i > 6; i++){
-        a[Math.floor(Math.random() * a.length)];
+
+
+///This chooses a random word from the array that selectedSubject is.
+    selectedSubject = selectedSubject[Math.floor(Math.random() * selectedSubject.length)];
+
+//current score of the player
+    let currentScore = 0;
+    //code validation of anagram/////////////
+    $('#submit').on('click', function () {
+      if($('#answer').val() === selectedSubject){
+        $anagram1.text(selectedSubject).css('color', 'red');
+        currentScore =+ selectedSubject.length;
+        console.log('working');
       }
-    }
-    console.log(wordGenerator(selectedSubject));
+    });
+
+/// this scrambles the word into an anagram
+    selectedSubject =  selectedSubject.split('').sort(function(){
+      return 0.5 - Math.random();
+    } ).join('');
 
 
     /// These are the difficulty settings chosen by the user split into different functions ...
-    function difficultyEasy (x){
+    function difficultyEasy (){
+
       setInterval(function() {
-        $anagram1.text(x).css('top', '+=10px');
+        $anagram1.text(selectedSubject).css('top', '+=10px');
         console.log('heyyoo!');
       },2000);
     }
+
     difficultyEasy(selectedSubject);
     // difficultyEasy(selectedSubject);
 
@@ -148,13 +164,8 @@ $(() => {
   // a function and/or an if/else statement that will check the input field agaisnt the anagrams
   //use, to lower case, incase they type in with any capital letters so the strings will match
 
-  //Working code
-  $('#submit').on('click', function () {
-    if($('#answer').val() === selectedSubject){
-      $anagram1.text(selectedSubject).css('color', 'red');
-      console.log('hello');
-    }
-  });
+
+
 
 
   // const Subjects = {
