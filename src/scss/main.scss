@@ -18,21 +18,16 @@ main {
   height: 1000px;
   margin: 0 auto;
   margin-top: 150px;
-
-
   div.features {
     margin: 0 auto;
     border: 3px solid red;
     width: 1200px;
     height: 800px;
     background-color: blue;
-
     div.options {
       display: inline-block;
       color: yellow;
-
     }
-
       input {
        margin: 0 auto;
         text-align: center;
@@ -41,8 +36,6 @@ main {
         font-size: 40px;
       }
   }
-
-
   div.ag-tetris {
     color: white;
     position: relative;
@@ -66,35 +59,44 @@ main {
   #anagram3 {
     position: absolute;
     top: -50px;
+    left: 150px;
   }
   #anagram4 {
     position: absolute;
     top: -50px;
+    left: 200px;
   }
   #anagram5 {
     position: absolute;
     top: -50px;
+    left: 250px;
   }
   #anagram6 {
     position: absolute;
     top: -50px;
+    left: 300px;
   }
   #anagram7 {
     position: absolute;
     top: -50px;
+    left: 350px;
   }
   #anagram8 {
     position: absolute;
     top: -50px;
+    left: 400px;
   }
   #anagram9 {
     position: absolute;
     top: -50px;
+    left: 450px;
   }
   #anagram10 {
     position: absolute;
     top: -50px;
+    left: 500px;
   }
+
 
 
 }

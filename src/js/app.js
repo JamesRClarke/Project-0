@@ -1,8 +1,10 @@
 console.log('JS Loaded');
 $(() => {
+  let interval;
   const $playGame = $('#play');
   const $inputByUser = $('#answer');
-
+  const $subjectOptions = $('#subject-options');
+  const $difficultyOptions = $('#difficulty-options');
   const $anagram1 = $('#anagram1');
   const $anagram2 = $('#anagram2');
   const $anagram3 = $('#anagram3');
@@ -13,126 +15,179 @@ $(() => {
   const $anagram8 = $('#anagram8');
   const $anagram9 = $('#anagram9');
   const $anagram10 = $('#anagram10');
-
-  let $BBT = $('#BBT').val();
-  let $LOTR = $('#LOTR').val();
-  let $EPL = $('#EPL').val();
-  let $ASIA = $('#ASIA').val();
-  let $WDI = $('#WDI').val();
-
-  let $EASY = $('#easy').val();
-  let $MEDIUM = $('#medium').val();
-  let $HARD = $('#hard').val();
-  let $INSANE = $('#insane').val();
-
-  $BBT = ['sheldon','leanord','spock','cheesecakefactory','howard','startrek','penny','koothrapoli','bernadette','physics','laundry','halonight','dumplings', 'brisket','nasa','stringtheory','darkmatter', 'comiccon','comicbook'];
-
-  $LOTR = ['arragon', 'gimli'];
+  const $anagrams = [$anagram1,$anagram2,$anagram3,$anagram4,$anagram5,$anagram6,$anagram7,$anagram8,$anagram9,$anagram10];
+  const categories = {
+    BBT: ['sheldon','leanord','spock','cheesecakefactory','howard','startrek','penny','koothrapoli','bernadette','physics','laundry','halonight','dumplings', 'brisket','nasa','stringtheory','darkmatter', 'comiccon','comicbook'],
+    LOTR: ['arragon', 'gimli']
+  };
 
   ////////////////////Selectors///////////////////////////
-  let selectedDifficulty = null;
-  let selectedSubject = null;
-
-  $('#subject-options').on('change', function() {
-    selectedSubject = $('#subject-options option:checked').val();
-    switch (selectedSubject){
-      case '$BBT':
-      selectedSubject = $BBT;
-      break;
-      case '$LOTR':
-      selectedSubject = $LOTR;
-      break;
-      case '$EPL':
-      selectedSubject = $EPL;
-      break;
-      case '$WDI':
-      selectedSubject = $WDI;
-      break;
-      case '$ASIA':
-      selectedSubject = $ASIA;
-      break;
-      default:
-      console.log('WOOOHOO');
-
-    }
+  let selectedDifficulty = '';
+  let selectedSubject = '';
+  $subjectOptions.on('change', () => {
+    const value = $subjectOptions.val();
+    selectedSubject = categories[value];
   });
-
-  $('#difficulty-options').on('change', function() {
-    selectedDifficulty = $('#difficulty-options option:checked').val();
-    switch (selectedDifficulty){
-      case 'easy':
-      selectedDifficulty = $EASY;
-      break;
-      case 'medium':
-      selectedDifficulty = $MEDIUM;
-      break;
-      case 'hard':
-      selectedDifficulty = $HARD;
-      break;
-      case 'insane':
-      selectedDifficulty = $INSANE;
-      break;
-      default:
-      console.log('WOOOHOO');
-    }
+  $difficultyOptions.on('change', () => {
+    selectedDifficulty = $difficultyOptions.val();
   });
-  ////////////////////Selectors///////////////////////////
+  ////////////////////Selectors End///////////////////////////
 
+  function generateWord() {
+    const selectedWord = selectedSubject[Math.floor(Math.random() * selectedSubject.length)];
+    return selectedWord;
+  }
 
-  ////The next two sets of JavaScript work however need to store them inside functions and call them when needed as i dont want the logic inside this function.
-  //// selects a random word from the selected array
-
-
-  //////////Up to here//////
-  //////////////////////////WORKING CODE//////////////////////////////////////
-  /// function that takes the anagram and moves it down the screen
-  let interval = false;
-  function difficultyEasy (){
-
-
-    selectedSubject = selectedSubject[Math.floor(Math.random() * selectedSubject.length)];
-
-    console.log(selectedSubject);
-
-    /// this scrambles the word into an anagram
-    const scrambledWord =  selectedSubject.split('').sort(function(){
+  function generateAnagram(selectedWord) {
+    return selectedWord.split('').sort(function(){
       return 0.5 - Math.random();
     } ).join('');
-    interval = setInterval(function() {
-      $anagram1.text(scrambledWord).css('top', '+=10px');
-    },2000);
   }
+
+  let selectedAnagram = '';
+  function randomisePosition () {
+    selectedAnagram = $anagrams[Math.floor((Math.random() * 10) + 1)];
+    return selectedAnagram;
+  }
+
+  function nonReuseable () {
+    $anagrams.sort(function() {
+      return 0.5 - Math.random();
+    });
+  }
+
+
+  /////////////// These are the difficulty option functions ///////////////
+  function difficultyEasy (selectedAnagram){
+
+    const selectedWord = generateWord();
+    const scrambledWord = generateAnagram(selectedWord);
+
+    selectedAnagram.text(scrambledWord);
+    selectedAnagram.attr('data-word', selectedWord);
+
+    interval = setInterval(function() {
+      selectedAnagram.css('top', '+=10px');
+    },2000);
+    const position = selectedAnagram.position();
+    console.log(position);
+  }
+
+  function difficultyMedium (selectedAnagram){
+
+    const selectedWord = generateWord();
+    const scrambledWord = generateAnagram(selectedWord);
+
+    selectedAnagram.text(scrambledWord);
+    selectedAnagram.attr('data-word', selectedWord);
+
+    interval = setInterval(function() {
+      selectedAnagram.css('top', '+=20px');
+    },2000);
+    const position = selectedAnagram.position();
+    console.log(position);
+  }
+
+  function difficultyHard (selectedAnagram){
+
+    const selectedWord = generateWord();
+    const scrambledWord = generateAnagram(selectedWord);
+
+    selectedAnagram.text(scrambledWord);
+    selectedAnagram.attr('data-word', selectedWord);
+
+    interval = setInterval(function() {
+      selectedAnagram.css('top', '+=20px');
+    },1500);
+    const position = selectedAnagram.position();
+    console.log(position);
+  }
+
+  function difficultyInsane (selectedAnagram){
+
+    const selectedWord = generateWord();
+    const scrambledWord = generateAnagram(selectedWord);
+
+    selectedAnagram.text(scrambledWord);
+    selectedAnagram.attr('data-word', selectedWord);
+
+
+    interval = setInterval(function() {
+      selectedAnagram.css('top', '+=30px');
+    },1000);
+    const position = selectedAnagram.position();
+    console.log(position);
+  }
+
+  //////////////////// Difficulty Options End here ////////////////////////
 
   //current score of the player
   let lifeScore = 5;
-  let currentScore = 0;
+  let currentScoreDislpayed = 0;
+  let winCondition = 0;
   //code validation of anagram
-  /// function that stops and animates a correctly guesses answer
+  /// function that stops and animates a correctly or incorrectly given answer
   //////////////////////////WORKING CODE//////////////////////////////////////
+
   $('#submit').on('click', function () {
-    if($('#answer').val() === selectedSubject){
+    const selectedWord = selectedAnagram.attr('data-word');
 
-      $anagram1.text(selectedSubject).css('display','hidden');
+    if($('#answer').val() === selectedWord){
 
-    console.log(  currentScore = currentScore + selectedSubject.length);
+      console.log(`when this reaches 10 player wins the game -  ${winCondition = winCondition + 1}`);
+      selectedAnagram.text(selectedWord).css('display','hidden');
 
-      $anagram1.addClass('animated fadeOutLeft').css('color','green');
+      console.log(`players current score is now ${currentScoreDislpayed = currentScoreDislpayed + selectedWord.length}`);
+
+      selectedAnagram.addClass('animated fadeOutLeft').css('color','green');
 
       clearInterval(interval);
     } else {
-      $anagram1.addClass('animated wobble').css('color','red');
-      console.log( lifeScore = lifeScore -1);
+      selectedAnagram.addClass('animated wobble').css('color','red');
+      console.log( `lives left is now ${lifeScore = lifeScore -1}`);
     }
   }
 );
+
 $playGame.on('click', function(){
-  difficultyEasy();
-  setInterval(function(){
-    difficultyEasy();
-  },10000);
+  switch (selectedDifficulty) {
+    case 'easy':
+    randomisePosition();
+    difficultyEasy(selectedAnagram);
+    setInterval(function(){
+      randomisePosition();
+      nonReuseable();
+      difficultyEasy(selectedAnagram);
+    },10000);
+    break;
+    case 'medium':
+    randomisePosition();
+    difficultyMedium(selectedAnagram);
+    setInterval(function(){
+      randomisePosition();
+      difficultyMedium(selectedAnagram);
+    },8000);
+    break;
+    case 'hard':
+    randomisePosition();
+    difficultyHard(selectedAnagram);
+    setInterval(function(){
+      randomisePosition();
+      difficultyHard(selectedAnagram);
+    },5000);
+    break;
+    case 'insane':
+    randomisePosition();
+    setInterval(function(){
+      randomisePosition();
+      difficultyInsane(selectedAnagram);
+    },3000);
+    break;
+    default:
+    alert('Please select a difficulty...');
+  }
+  console.log(selectedDifficulty);
 });
-
-
 
 /// These are the difficulty settings chosen by the user split into different functions ...
 
