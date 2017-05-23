@@ -1,11 +1,9 @@
 *{
   box-sizing: border-box;
 }
-
 body {
-background-color: white;
+background-color: black;
 }
-
 header {
   background-color: green;
 }
@@ -23,7 +21,13 @@ main {
     border: 3px solid red;
     width: 1200px;
     height: 800px;
-    background-color: blue;
+    padding: 10px;
+    background-color: white;
+
+    div#instructions {
+      float: right;
+      margin-right: 70px;
+    }
     input {
      margin: 0 auto;
       text-align: center;
@@ -36,94 +40,49 @@ main {
       color: yellow;
       padding: 10px;
     }
-      h3#currentScore {
-        position: absolute;
-        left: 200px;
-        bottom: 375px;
-      }
       h3#lives {
         position: absolute;
-        right: 250px;
-        bottom: 360px;
+        left: 550px;
+        top: 320px;
+      }
+      h3#winCondition {
+        position: absolute;
+        left: 548px;
+        top: 260px;
       }
   }
   div.ag-tetris {
-    color: white;
+    color: black;
     position: relative;
-    margin-top: 2000px;
     margin: 0 auto;
-    border: 3px solid red;
     width: 800px;
     height: 550px;
     background-color: black;
+    overflow: hidden;
   }
-
   .anagram {
     position: absolute;
     top: -50px;
     font-size: 20px;
   }
-
-  #anagram1 {
-    position: absolute;
-    top: -50px;
-    font-size: 20px;
+  .imageBBT {
+    background: url('http://www.serienjunkies.de/big-bang-theory/big-bang-theory.jpg');
+    background-size: cover;
   }
-  #anagram2 {
-    position: absolute;
-    top: -50px;
-    left: 100px;
-    font-size: 20px;
+  .imageLOTR {
+    background: url('http://www.serienjunkies.de/big-bang-theory/big-bang-theory.jpg');
+    background-size: cover;
   }
-  #anagram3 {
-    position: absolute;
-    top: -50px;
-    left: 150px;
-    font-size: 20px;
+  .imageASIA {
+    background: url('http://www.serienjunkies.de/big-bang-theory/big-bang-theory.jpg');
+    background-size: cover;
   }
-  #anagram4 {
-    position: absolute;
-    top: -50px;
-    left: 200px;
-    font-size: 20px;
+  .imageEPL {
+    background: url('http://www.serienjunkies.de/big-bang-theory/big-bang-theory.jpg');
+    background-size: cover;
   }
-  #anagram5 {
-    position: absolute;
-    top: -50px;
-    left: 250px;
-    font-size: 20px;
+  .imageWDI {
+    background: url('http://www.serienjunkies.de/big-bang-theory/big-bang-theory.jpg');
+    background-size: cover;
   }
-  #anagram6 {
-    position: absolute;
-    top: -50px;
-    left: 325px;
-    font-size: 20px;
-  }
-  #anagram7 {
-    position: absolute;
-    top: -50px;
-    left: 3750px;
-    font-size: 20px;
-  }
-  #anagram8 {
-    position: absolute;
-    top: -50px;
-    left: 450px;
-    font-size: 20px;
-  }
-  #anagram9 {
-    position: absolute;
-    top: -50px;
-    left: 500px;
-    font-size: 20px;
-  }
-  #anagram10 {
-    position: absolute;
-    top: -50px;
-    left: 600px;
-    font-size: 20px;
-  }
-
-
-
 }

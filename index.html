@@ -19,8 +19,12 @@
   <main>
 
     <div class="features">
+      <div id="instructions">
+      </div>
+      <h3 id="lives">Lives Left: 5</h3>
+      <h3 id="winCondition">Correct Awnsers: </h3>
       <div class="options">
-        <p>Subjects</p>
+        <h2>Subjects</h2>
         <select id="subject-options" name="subject-options">
           <option selected disabled >Please Choose</option>
           <option value="BBT">Big Bang Theory</option>
@@ -30,7 +34,7 @@
           <option value="WDI">Web Development</option>
         </select>
 
-        <p>Difficulty</p>
+        <h2>Difficulty</h2>
 
         <select id="difficulty-options" name="difficulty-options">
           <option selected disabled>Please Choose</option>
@@ -39,28 +43,16 @@
           <option value="hard">Hard</option>
           <option value="insane">Are You Insane ?</option>
         </select>
-
-
       </div>
 
 <button id="play">PLAY!</button>
-          <h3 id="currentScore">Score: 0</h3>
-          <h3 id="lives">Lives: 5</h3>
+          <!-- <h3 id="highScore">High Score: 0</h3>
+          <h3 id="currentScore">Score: 0</h3> -->
+
       <div class="ag-tetris">
-        <p id="anagram1"></p>
-        <p id="anagram2"></p>
-        <p id="anagram3"></p>
-        <p id="anagram4"></p>
-        <p id="anagram5"></p>
-        <p id="anagram6"></p>
-        <p id="anagram7"></p>
-        <p id="anagram8"></p>
-        <p id="anagram9"></p>
-        <p id="anagram10"></p>
       </div>
       <form>
           <input id="answer" type="text" placeholder="Answer" >
-          <input id="submit" type="button">
       </form>
       </div>
 
