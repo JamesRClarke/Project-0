@@ -91,6 +91,18 @@ $(() => {
     $anagram.css({left: left});
     return $anagram;
   }
+  function anagramHitsTheBottom () {
+    $('.anagram').each(function () {
+      const position = Math.round($(this).position().top);
+      if (position >= 462) {
+        console.log('working');
+        $lives.html(`Lives Left: ${lifeScore = lifeScore - 1}`);
+        $(this).css('color','red');
+        $(this).addClass('animated hinge');
+      }
+    });
+  }
+
   //////////////////////Functions that change the word/////////////////////////
 
   /////////////// These are the difficulty option functions ///////////////
@@ -101,32 +113,37 @@ $(() => {
     selectedAnagram.text(scrambledWord);
     selectedAnagram.attr('data-word', selectedWord);
     $container.append(selectedAnagram);
+    anagramHitsTheBottom();
+
     interval = setInterval(function() {
       selectedAnagram.css('top', '+=10px');
-      console.log(Math.round(selectedAnagram.position().top));
-    },2000);
+    },1500);
   }
   function difficultyMedium (){
     const selectedWord = generateWord();
     const scrambledWord = generateAnagram(selectedWord);
     const selectedAnagram = generateAnagramElement();
+
     selectedAnagram.text(scrambledWord);
     selectedAnagram.attr('data-word', selectedWord);
     $container.append(selectedAnagram);
+    anagramHitsTheBottom();
     interval = setInterval(function() {
-      selectedAnagram.css('top', '+=20px');
-    },2000);
+      selectedAnagram.css('top', '+=10px');
+    },1000);
   }
   function difficultyHard (){
     const selectedWord = generateWord();
     const scrambledWord = generateAnagram(selectedWord);
     const selectedAnagram = generateAnagramElement();
+
     selectedAnagram.text(scrambledWord);
     selectedAnagram.attr('data-word', selectedWord);
     $container.append(selectedAnagram);
+    anagramHitsTheBottom();
     interval = setInterval(function() {
-      selectedAnagram.css('top', '+=20px');
-    },1500);
+      selectedAnagram.css('top', '+=10px');
+    },700);
   }
   function difficultyInsane (){
     const selectedWord = generateWord();
@@ -136,40 +153,13 @@ $(() => {
     selectedAnagram.text(scrambledWord);
     selectedAnagram.attr('data-word', selectedWord);
     $container.append(selectedAnagram);
-
-
+    anagramHitsTheBottom();
     interval = setInterval(function() {
-      // const position = Math.round(selectedAnagram.position().top);
-      // console.log(position);
-      //
-      // if (position <= 550) {
-      //   console.log('noooooooooooo');
-      //   lifeScore = lifeScore - 1;
-      // }
-      selectedAnagram.css('top', '+=30px');
-    },1000);
+      selectedAnagram.css('top', '+=10px');
+    },200);
   }
   //////////////////// Difficulty Options End here ////////////////////////
 
-
-  /// This is the validation when the button is clicked to submit an answer, this also holds the animations applied to the game.
-  $('form').on('submit', function (e) {
-    e.preventDefault();
-
-    $('.anagram').each(function () {
-      const checker = $(this).data('word');
-
-      if ($('#answer').val() === checker){
-        $winCondition.html(`Correct Answers: ${winCondition = winCondition + 1}`);
-        $(this).addClass('animated fadeOutLeft').css('color','green');
-        $(this).css('display','hidden');
-        // $currentScore.html(`Score: ${currentScoreDislpayed += 5}`);
-      } else {
-        $('.anagram').addClass('animated wobble');
-      }
-    });
-    $('form').trigger('reset');
-  });
 
   // let highScore = localStorage.getItem('highScore') || 0;
   // function setHighScore ($highScore) {
@@ -189,9 +179,11 @@ $(() => {
 
   /// This is for when the player is ready to play, after the difficulty is selected and the play button is clicked - so this starts the game!
   $playGame.on('click', function(){
+
     switch (selectedDifficulty) {
       case 'easy':
       difficultyEasy();
+
       const intervalE = setInterval(function(){
         if (winCondition >= 5) {
           alert('You beat the game this time, can you manage a medium difficutly...?');
@@ -242,6 +234,7 @@ $(() => {
       break;
 
       case 'insane':
+
       difficultyInsane();
       const intervalI = setInterval(function(){
         if (winCondition >= 10 ) {
@@ -260,6 +253,25 @@ $(() => {
       default:
       alert('Please select a difficulty...');
     }
+  });
+  /// This is the validation when the button is clicked to submit an answer, this also holds the animations applied to the game.
+
+  $('form').on('submit', function (e) {
+    e.preventDefault();
+
+    $('.anagram').each(function () {
+      const checker = $(this).data('word');
+
+      if ($('#answer').val() === checker){
+        $winCondition.html(`Correct Answers: ${winCondition = winCondition + 1}`);
+        $(this).addClass('animated fadeOutLeft').css('color','green');
+        $(this).css('display','hidden');
+        // $currentScore.html(`Score: ${currentScoreDislpayed += 5}`);
+      } else {
+        $('.anagram').addClass('animated wobble');
+      }
+    });
+    $('form').trigger('reset');
   });
 });
 
