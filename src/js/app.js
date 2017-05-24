@@ -1,25 +1,33 @@
 console.log('JS Loaded');
 $(() => {
   let lifeScore = 5;
-  // let currentScoreDislpayed = 0;
   let winCondition = 0;
   let interval;
-  // const $currentScore = $('#currentScore');
+  let difficulty = null;
   const $lives = $('#lives');
-  // const $highScore = $('#hihghScore');
   const $playGame = $('#play');
   const $winCondition = $('#winCondition');
-
   const $subjectOptions = $('#subject-options');
   const $difficultyOptions = $('#difficulty-options');
-
   const $container = $('.ag-tetris');
-
   const $instructions = $('#instructions');
-
   const categories = {
-    BBT: ['sheldon','leanord','spock','cheesecakefactory','howard','startrek','penny','koothrapoli','bernadette','physics','laundry','halonight','dumplings', 'brisket','nasa','stringtheory','darkmatter', 'comiccon','comicbook'],
-    LOTR: ['arragon', 'gimli']
+    BBT: ['sheldon','leanord','spock','cheesecake factory','howard','startrek','penny','koothrapoli','bernadette','physics','laundry','halonight','dumplings', 'brisket','nasa','stringtheory','darkmatter', 'comiccon','comicbook'],
+
+    LOTR: ['arragon', 'gimli','gandalf','legolas','mordor','uruk hai','frodo','golumn','orcs','theshire','baggins','sauron', 'gondor','elves','hobbit','dwarves','twotowers','blackgate','fariamir','saruman','shadowfax','witchking'],
+
+    EPL: ['arsenal','bournemouth','burnley','brighton','chelsea','crystal palace','everton','leicstercity','liverpool','manchestercity','manchesterunited','newcastle','southampton','stoke city','tottenhamhotspur','watford','westbrom','westham'],
+
+    CC: ['buenosaires','vienna','bridgetown','brasilia','brussels','sofia','phnom peh','ottowa','bangui','san jose','havana','prauge','cairo','helsinki','budapest','jakarta','jerusalem','kingston','tokyo','nairobi','kuala lumpur','rabat','oslo','pyongynag'],
+
+    WDI: ['function','javascript','switch','refactor','namespacing','jquery','const','primitive','object','array','responsive','constructor','reccursive','indentation','iterate','method','algorithim','terminal','github','debugging','whileloop','variable']
+  };
+  const options = {
+    easy: {
+      interval: 10000,
+      speed: 1000,
+      winCondition: 5
+    }
   };
 
   ////////////////////Selectors///////////////////////////
@@ -28,46 +36,12 @@ $(() => {
   $subjectOptions.on('change', () => {
     const value = $subjectOptions.val();
     selectedSubject = categories[value];
-    // switch (value) {
-    //   case 'BBT':
-    //   $('.ag-tetris').addClass('imageBBT');
-    //   $('.features').css({'background-color': 'black', 'color': 'white'})
-    //   break;
-    //   case 'LOTR':
-    //   $('.ag-tetris').addClass('imageLOTR');
-    //   $('.features').css({'background-color': 'black', 'color': 'white'})
-    //   break;
-    //   case 'CC':
-    //   $('.ag-tetris').addClass('imageCC');
-    //   $('.features').css({'background-color': 'black', 'color': 'white'})
-    //   break;
-    //   case 'EPL':
-    //   $('.ag-tetris').addClass('imageEPL');
-    //   $('.features').css({'background-color': 'black', 'color': 'white'})
-    //   break;
-    //   case 'WDI':
-    //   $('.features').css({'background-color': 'black', 'color': 'white'})
-    //   break;
-    // }
   });
   $difficultyOptions.on('change', () => {
     selectedDifficulty = $difficultyOptions.val();
-    switch (selectedDifficulty) {
-      case 'easy':
-      $instructions.append('<h2>Instructions</h2><p> When a word falls to the bottom of the box you lose a life.<br><br>You need to guess 5 anagrams correctly to beat this game!<br><br>You have 5 lives...Enjoy!</p>');
-      break;
-      case 'medium':
-      $instructions.append('<h2>Instructions</h2><p> When a word falls to the bottom of the box you lose a life.<br><br>You need to guess 7 anagrams correctly to beat this game!<br><br>You have 5 lives...Enjoy!</p>');
-      break;
-      case 'hard':
-      $instructions.append('<h2>Instructions</h2><p> When a word falls to the bottom of the box you lose a life.<br><br>You need to guess 10 anagrams correctly to beat this game!<br><br>You have 5 lives...Enjoy!</p>');
-      break;
-      case 'insane':
-      $instructions.append('<h2>Instructions</h2><p> When a word falls to the bottom of the box you lose a life.<br><br>You need to guess 10 anagrams correctly to beat this game!<br><br>You have 10 lives...Enjoy!</p>');
-      break;
-    }
+    difficulty = options[selectedDifficulty];
+    console.log(difficulty);
   });
-
   ////////////////////Selectors End///////////////////////////
 
   //////////////////////Functions that change the word/////////////////////////
@@ -88,22 +62,26 @@ $(() => {
   /// This generates a different element in a differnt position from the HTML
   function generateAnagramElement () {
     const $anagram = $('<p class="anagram"></p>');
-    const left = Math.ceil((Math.random() * 700));
+    const left = Math.ceil((Math.random() * 650));
     $anagram.css({left: left});
     return $anagram;
   }
   function anagramHitsTheBottom () {
     $('.anagram').each(function () {
       const position = Math.round($(this).position().top);
-      if (position >= 451) {
-        console.log('working');
-        $lives.html(`Lives Left: ${ lifeScore = lifeScore - 1}`);//Not Working
+      if (position >= 465) {
+        console.log(lifeScore);
+        if(!$(this).hasClass('hinge')) lifeScore -= 1;
+        $lives.html(`Lives Left: ${lifeScore}`);//Not Working
         $(this).css('color','red');
         $(this).addClass('animated hinge');
+        setTimeout(() => {
+          $(this).remove();
+        },500);
+
       }
     });
   }
-
   //////////////////////Functions that change the word/////////////////////////
 
   /////////////// These are the difficulty option functions ///////////////
@@ -114,10 +92,10 @@ $(() => {
     selectedAnagram.text(scrambledWord);
     selectedAnagram.attr('data-word', selectedWord);
     $container.append(selectedAnagram);
-    anagramHitsTheBottom();
 
     interval = setInterval(function() {
       selectedAnagram.css('top', '+=10px');
+      anagramHitsTheBottom();
     },1500);
   }
   function difficultyMedium (){
@@ -128,9 +106,9 @@ $(() => {
     selectedAnagram.text(scrambledWord);
     selectedAnagram.attr('data-word', selectedWord);
     $container.append(selectedAnagram);
-    anagramHitsTheBottom();
     interval = setInterval(function() {
       selectedAnagram.css('top', '+=10px');
+      anagramHitsTheBottom();
     },1000);
   }
   function difficultyHard (){
@@ -141,9 +119,9 @@ $(() => {
     selectedAnagram.text(scrambledWord);
     selectedAnagram.attr('data-word', selectedWord);
     $container.append(selectedAnagram);
-    anagramHitsTheBottom();
     interval = setInterval(function() {
       selectedAnagram.css('top', '+=10px');
+      anagramHitsTheBottom();
     },700);
   }
   function difficultyInsane (){
@@ -154,29 +132,23 @@ $(() => {
     selectedAnagram.text(scrambledWord);
     selectedAnagram.attr('data-word', selectedWord);
     $container.append(selectedAnagram);
-    anagramHitsTheBottom();
     interval = setInterval(function() {
       selectedAnagram.css('top', '+=10px');
+      anagramHitsTheBottom();
     },200);
   }
   //////////////////// Difficulty Options End here ////////////////////////
 
-
-  // let highScore = localStorage.getItem('highScore') || 0;
-  // function setHighScore ($highScore) {
-  //   highScore = currentScoreDislpayed > highScore ? currentScoreDislpayed : highScore;
-  //   $highScore.text($highScore);
-  // }
+///////////This is the reset function after a game has finished////////////////
   function reset () {
     lifeScore = 5;
     $lives.html('Lives: 5');
-    // currentScoreDislpayed = 0;
-    // $currentScore.html(`Score: 0`);
     winCondition = 0;
     $winCondition.html('Correct Answers: 0');
     $('.anagram').remove();
-    // setHighScore();
   }
+
+/////////////////////////////////reset function end///////////////////////////
 
   /// This is for when the player is ready to play, after the difficulty is selected and the play button is clicked - so this starts the game!
   $playGame.on('click', function(){
@@ -193,8 +165,7 @@ $(() => {
           clearInterval(intervalE);
           alert('Game Over, sorry you lost, Booooooo!');
           reset();
-        }
-        else {
+        } else {
           difficultyEasy();
         }
       },10000);
@@ -250,6 +221,7 @@ $(() => {
           reset();
         }
         else {
+          console.log('Function called!')
           difficultyInsane();
         }
       },2500);
@@ -262,16 +234,23 @@ $(() => {
 
   $('form').on('submit', function (e) {
     e.preventDefault();
-    $('.anagram').each(function () {
+    console.log('in here');
+    $('.anagram').each(function (anagram) {
+      console.log(anagram, this);
       const checker = $(this).data('word');
 
       if ($('#answer').val() === checker){
-        $(this).addClass('animated fadeOutLeft').css('color','green');
+        $(this).addClass('animated fadeOutLeft').css('color','#39FF14');
         $winCondition.html(`Correct Answers: ${winCondition = winCondition + 1}`);
-        $(this).remove();
-        // $currentScore.html(`Score: ${currentScoreDislpayed += 5}`);
+        setTimeout(() => {
+          $(this).remove();
+        },500);
+
       } else {
         $('.anagram').addClass('animated wobble');
+        setTimeout(() => {
+          $('.anagram').removeClass('wobble');
+        },500);
       }
     });
     $('form').trigger('reset');

@@ -2,36 +2,46 @@
   box-sizing: border-box;
 }
 body {
-  background-color: black;
   font-family: 'Roboto Mono', monospace;
+  background-color: #141815;
+  background-color: #152b13;
 }
-header {
-  background-color: green;
+header div#instructions {
+  position: relative;
+  font-size: 23px;
+  text-align: center;
+  color: white;
+
 }
 header h1 {
-  color: black;
+  color: white;
+  font-size: 120px;
   text-align: center;
+  font-family: 'Faster One', cursive;
+  // font-family: 'Codystar', cursive;
 }
 main {
   margin: 0 auto;
   margin-top: 200px;
+  h2 {
+    color: white;
+    font-size: 27px;
+  }
 
   div.features {
+    color: white;
     position: absolute;
     margin: 0 auto;
-    border: 1px solid #4CAF50;
+    border: 3px solid black;
     width: 1200px;
     height: 850px;
     left: 150px;
-    background-color: white;
+    background-image: url('http://cdn.wallpapersafari.com/31/73/h9LGbE.jpg');
+    background-size:cover;
 
-    div#instructions {
-      float: right;
-      margin-right: 70px;
-    }
     button {
       position: absolute;
-      bottom: 20px;
+      bottom: 25px;
       left:850px;
       font-size: 24px;
       padding: 20px;
@@ -40,7 +50,7 @@ main {
       text-decoration: none;
       outline: none;
       color: #fff;
-      background-color: #4CAF50;
+      background-color: #39FF14;
       border: none;
       border-radius: 15px;
       box-shadow: 0 9px #999;
@@ -58,59 +68,71 @@ main {
       height: 50px;
       font-size: 40px;
       left: 172px;
-      bottom: 20px;
+      bottom: 25px;
       outline:none;
     }
     input[type=text]:focus {
       border: 3px solid #4CAF50;
     }
-    div.options {
-      position: relative;
-      display: inline-block;
-      color: black;
-    }
-    h3#lives {
-      position: absolute;
-      left: 250px;
-      top:  30px;
-    }
-    h3#winCondition {
-      position: absolute;
-      left: 250px;
-      top: 100px;
-    }
-  }
-  div.ag-tetris {
-    position: relative;
-    color: white;
-    margin: 0 auto;
-    width: 850px;
-    height: 550px;
-    background-color: black;
 
-  }
-  .anagram {
+    .options h2 {
+      padding-left: 280px;
+    }
+
+    select#subject-options, select#difficulty-options {
+      position: relative;
+      left: 480px;
+      bottom: 48px;
+    }
+    // select#difficulty-options {
+    //   position: relative;
+    //   left: 400px;
+    //     bottom: 50px;
+    // }
+
+  h3#lives {
     position: absolute;
-    top: -40px;
-    font-size: 25px;
+    left: 700px;
+    top:  30px;
   }
-  // .imageBBT {
-  //   background: url('http://www.serienjunkies.de/big-bang-theory/big-bang-theory.jpg');
-  //   background-size: cover;
-  // }
-  // .imageLOTR {
-  //   background: url('https://i0.wp.com/media2.slashfilm.com/slashfilm/wp/wp-content/images/lordoftherings-ring-map.jpg');
-  //   background-size: cover;
-  //  }
-  // .imageCC {
-  //   background: url('https://wallpaperscraft.com/image/new_york_night_skyscrapers_top_view_59532_1920x1080.jpg');
-  //   background-size: cover;
-  // }
-  // .imageEPL {
-  //   background: url('http://wallpapercave.com/wp/wp1830664.png');
-  //   background-size: cover;
-  // }
-  // .imageWDI {
-  //   background: url('http://www.serienjunkies.de/big-bang-theory/big-bang-theory.jpg');
-  //   background-size: cover;
+  h3#winCondition {
+    position: absolute;
+    left: 700px;
+    top: 100px;
+  }
+}
+div.ag-tetris {
+  position: relative;
+  color: white;
+  margin: 0 auto;
+  width: 850px;
+  height: 550px;
+  background-color: black;
+  border: 2px solid #39FF14;
+
+}
+.anagram {
+  position: absolute;
+  top: -30px;
+  font-size: 30px;
+}
+// .imageBBT {
+//   background: url('http://www.serienjunkies.de/big-bang-theory/big-bang-theory.jpg');
+//   background-size: cover;
+// }
+// .imageLOTR {
+//   background: url('https://i0.wp.com/media2.slashfilm.com/slashfilm/wp/wp-content/images/lordoftherings-ring-map.jpg');
+//   background-size: cover;
+//  }
+// .imageCC {
+//   background: url('https://wallpaperscraft.com/image/new_york_night_skyscrapers_top_view_59532_1920x1080.jpg');
+//   background-size: cover;
+// }
+// .imageEPL {
+//   background: url('http://wallpapercave.com/wp/wp1830664.png');
+//   background-size: cover;
+// }
+// .imageWDI {
+//   background: url('http://www.serienjunkies.de/big-bang-theory/big-bang-theory.jpg');
+//   background-size: cover;
 }
