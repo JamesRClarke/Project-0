@@ -18,18 +18,32 @@ $(() => {
 
     EPL: ['arsenal','bournemouth','burnley','brighton','chelsea','crystal palace','everton','leicstercity','liverpool','manchestercity','manchesterunited','newcastle','southampton','stoke city','tottenhamhotspur','watford','westbrom','westham'],
 
-    CC: ['buenosaires','vienna','bridgetown','brasilia','brussels','sofia','phnom peh','ottowa','bangui','san jose','havana','prauge','cairo','helsinki','budapest','jakarta','jerusalem','kingston','tokyo','nairobi','kuala lumpur','rabat','oslo','pyongynag'],
+    CC: ['buenosaires','vienna','bridgetown','brasilia','brussels','sofia','phnom peh','ottowa','bangui','san jose','havana','prauge','cairo','helsinki','budapest','jakarta','jerusalem','kingston','tokyo','nairobi','kualalumpur','rabat','oslo','pyongyang'],
 
     WDI: ['function','javascript','switch','refactor','namespacing','jquery','const','primitive','object','array','responsive','constructor','reccursive','indentation','iterate','method','algorithim','terminal','github','debugging','whileloop','variable']
   };
-  const options = {
+  const settings = {
     easy: {
       interval: 10000,
+      speed: 1500,
+      winningCondition: 5
+    },
+    medium: {
+      interval: 7000,
       speed: 1000,
-      winCondition: 5
+      winningCondition: 7
+    },
+    hard: {
+      interval: 5000,
+      speed: 700,
+      winningCondition: 10
+    },
+    insane: {
+      interval: 2500,
+      speed: 200,
+      winningCondition: 10
     }
   };
-
   ////////////////////Selectors///////////////////////////
   let selectedDifficulty = '';
   let selectedSubject = '';
@@ -39,7 +53,7 @@ $(() => {
   });
   $difficultyOptions.on('change', () => {
     selectedDifficulty = $difficultyOptions.val();
-    difficulty = options[selectedDifficulty];
+    difficulty = settings[selectedDifficulty];
     console.log(difficulty);
   });
   ////////////////////Selectors End///////////////////////////
@@ -96,8 +110,9 @@ $(() => {
     interval = setInterval(function() {
       selectedAnagram.css('top', '+=10px');
       anagramHitsTheBottom();
-    },1500);
+    },difficulty.speed);
   }
+
   function difficultyMedium (){
     const selectedWord = generateWord();
     const scrambledWord = generateAnagram(selectedWord);
@@ -139,7 +154,7 @@ $(() => {
   }
   //////////////////// Difficulty Options End here ////////////////////////
 
-///////////This is the reset function after a game has finished////////////////
+  ///////////This is the reset function after a game has finished////////////////
   function reset () {
     lifeScore = 5;
     $lives.html('Lives: 5');
@@ -148,88 +163,104 @@ $(() => {
     $('.anagram').remove();
   }
 
-/////////////////////////////////reset function end///////////////////////////
+  /////////////////////////////////reset function end///////////////////////////
 
   /// This is for when the player is ready to play, after the difficulty is selected and the play button is clicked - so this starts the game!
   $playGame.on('click', function(){
+    console.log(difficulty[winCondition]);
+    difficultyEasy();
+    const interval = setInterval(function(){
+      if (winCondition === difficulty.winningCondition) {
+        alert('You beat the game this time, can you manage a medium difficutly...?');
+        clearInterval(interval);
+        reset();
+      } else if (lifeScore <= 0){
+        clearInterval(interval);
+        alert('Game Over, sorry you lost, Booooooo!');
+        reset();
+      } else{
+        difficultyEasy();
+      }
+    },difficulty.interval);
 
-    switch (selectedDifficulty) {
-      case 'easy':
-      difficultyEasy();
-      const intervalE = setInterval(function(){
-        if (winCondition >= 5) {
-          alert('You beat the game this time, can you manage a medium difficutly...?');
-          clearInterval(intervalE);
-          reset();
-        } else if (lifeScore <= 0) {
-          clearInterval(intervalE);
-          alert('Game Over, sorry you lost, Booooooo!');
-          reset();
-        } else {
-          difficultyEasy();
-        }
-      },10000);
-      break;
-
-      case 'medium':
-      difficultyMedium();
-      const intervalM = setInterval(function(){
-        if (winCondition >= 7 ) {
-          alert('You beat the game this time, can you manage a hard difficutly...?');
-          clearInterval(intervalM);
-          reset();
-        } else if ( lifeScore <= 0){
-          clearInterval(intervalM);
-          alert('Game Over, sorry you lost, Booooooo!');
-          reset();
-        }
-        else {
-          difficultyMedium();
-        }
-      },7000);
-      break;
-
-      case 'hard':
-      difficultyHard();
-      const intervalH = setInterval(function(){
-        if (winCondition >= 10 ) {
-          alert('You beat the game this time, well thats it, unless you really are insane...');
-          clearInterval(intervalH);
-          reset();
-        } else if ( lifeScore <= 0){
-          clearInterval(intervalH);
-          alert('Game Over, sorry you lost, Booooooo!');
-          reset();
-        }
-        else {
-          difficultyHard();
-        }
-      },5000);
-      break;
-
-      case 'insane':
-
-      difficultyInsane();
-      const intervalI = setInterval(function(){
-        if (winCondition >= 10 ) {
-          alert('You beat the game, like you beat it, beat it erm yeah, grats I guess');
-          clearInterval(intervalI);
-          reset();
-        } else if ( lifeScore <= 0){
-          clearInterval(intervalI);
-          alert('Game Over, sorry you lost, Booooooo!');
-          reset();
-        }
-        else {
-          console.log('Function called!')
-          difficultyInsane();
-        }
-      },2500);
-      break;
-      default:
-      alert('Please select a difficulty...');
-    }
+    // switch (selectedDifficulty) {
+    //   case 'easy':
+    //   difficultyEasy();
+    //   const intervalE = setInterval(function(){
+    //     if (winCondition >= 5) {
+    //       alert('You beat the game this time, can you manage a medium difficutly...?');
+    //       clearInterval(intervalE);
+    //       reset();
+    //     } else if (lifeScore <= 0) {
+    //       clearInterval(intervalE);
+    //       alert('Game Over, sorry you lost, Booooooo!');
+    //       reset();
+    //     } else {
+    //       difficultyEasy();
+    //     }
+    //   },10000);
+    //   break;
+    //
+    //   case 'medium':
+    //   difficultyMedium();
+    //   const intervalM = setInterval(function(){
+    //     if (winCondition >= 7 ) {
+    //       alert('You beat the game this time, can you manage a hard difficutly...?');
+    //       clearInterval(intervalM);
+    //       reset();
+    //     } else if ( lifeScore <= 0){
+    //       clearInterval(intervalM);
+    //       alert('Game Over, sorry you lost, Booooooo!');
+    //       reset();
+    //     }
+    //     else {
+    //       difficultyMedium();
+    //     }
+    //   },7000);
+    //   break;
+    //
+    //   case 'hard':
+    //   difficultyHard();
+    //   const intervalH = setInterval(function(){
+    //     if (winCondition >= 10 ) {
+    //       alert('You beat the game this time, well thats it, unless you really are insane...');
+    //       clearInterval(intervalH);
+    //       reset();
+    //     } else if ( lifeScore <= 0){
+    //       clearInterval(intervalH);
+    //       alert('Game Over, sorry you lost, Booooooo!');
+    //       reset();
+    //     }
+    //     else {
+    //       difficultyHard();
+    //     }
+    //   },5000);
+    //   break;
+    //
+    //   case 'insane':
+    //
+    //   difficultyInsane();
+    //   const intervalI = setInterval(function(){
+    //     if (winCondition >= 10 ) {
+    //       alert('You beat the game, like you beat it, beat it erm yeah, grats I guess');
+    //       clearInterval(intervalI);
+    //       reset();
+    //     } else if ( lifeScore <= 0){
+    //       clearInterval(intervalI);
+    //       alert('Game Over, sorry you lost, Booooooo!');
+    //       reset();
+    //     }
+    //     else {
+    //       console.log('Function called!')
+    //       difficultyInsane();
+    //     }
+    //   },2500);
+    //   break;
+    //   default:
+    //   alert('Please select a difficulty...');
+    // }
   });
+
   /// This is the validation when the button is clicked to submit an answer, this also holds the animations applied to the game.
 
   $('form').on('submit', function (e) {
