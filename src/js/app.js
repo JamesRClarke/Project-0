@@ -99,7 +99,7 @@ $(() => {
   //////////////////////Functions that change the word/////////////////////////
 
   /////////////// These are the difficulty option functions ///////////////
-  function difficultyEasy (){
+  function playGame (){
     const selectedWord = generateWord();
     const scrambledWord = generateAnagram(selectedWord);
     const selectedAnagram = generateAnagramElement();
@@ -113,45 +113,45 @@ $(() => {
     },difficulty.speed);
   }
 
-  function difficultyMedium (){
-    const selectedWord = generateWord();
-    const scrambledWord = generateAnagram(selectedWord);
-    const selectedAnagram = generateAnagramElement();
-
-    selectedAnagram.text(scrambledWord);
-    selectedAnagram.attr('data-word', selectedWord);
-    $container.append(selectedAnagram);
-    interval = setInterval(function() {
-      selectedAnagram.css('top', '+=10px');
-      anagramHitsTheBottom();
-    },1000);
-  }
-  function difficultyHard (){
-    const selectedWord = generateWord();
-    const scrambledWord = generateAnagram(selectedWord);
-    const selectedAnagram = generateAnagramElement();
-
-    selectedAnagram.text(scrambledWord);
-    selectedAnagram.attr('data-word', selectedWord);
-    $container.append(selectedAnagram);
-    interval = setInterval(function() {
-      selectedAnagram.css('top', '+=10px');
-      anagramHitsTheBottom();
-    },700);
-  }
-  function difficultyInsane (){
-    const selectedWord = generateWord();
-    const scrambledWord = generateAnagram(selectedWord);
-    const selectedAnagram = generateAnagramElement();
-
-    selectedAnagram.text(scrambledWord);
-    selectedAnagram.attr('data-word', selectedWord);
-    $container.append(selectedAnagram);
-    interval = setInterval(function() {
-      selectedAnagram.css('top', '+=10px');
-      anagramHitsTheBottom();
-    },200);
-  }
+  // function difficultyMedium (){
+  //   const selectedWord = generateWord();
+  //   const scrambledWord = generateAnagram(selectedWord);
+  //   const selectedAnagram = generateAnagramElement();
+  //
+  //   selectedAnagram.text(scrambledWord);
+  //   selectedAnagram.attr('data-word', selectedWord);
+  //   $container.append(selectedAnagram);
+  //   interval = setInterval(function() {
+  //     selectedAnagram.css('top', '+=10px');
+  //     anagramHitsTheBottom();
+  //   },1000);
+  // }
+  // function difficultyHard (){
+  //   const selectedWord = generateWord();
+  //   const scrambledWord = generateAnagram(selectedWord);
+  //   const selectedAnagram = generateAnagramElement();
+  //
+  //   selectedAnagram.text(scrambledWord);
+  //   selectedAnagram.attr('data-word', selectedWord);
+  //   $container.append(selectedAnagram);
+  //   interval = setInterval(function() {
+  //     selectedAnagram.css('top', '+=10px');
+  //     anagramHitsTheBottom();
+  //   },700);
+  // }
+  // function difficultyInsane (){
+  //   const selectedWord = generateWord();
+  //   const scrambledWord = generateAnagram(selectedWord);
+  //   const selectedAnagram = generateAnagramElement();
+  //
+  //   selectedAnagram.text(scrambledWord);
+  //   selectedAnagram.attr('data-word', selectedWord);
+  //   $container.append(selectedAnagram);
+  //   interval = setInterval(function() {
+  //     selectedAnagram.css('top', '+=10px');
+  //     anagramHitsTheBottom();
+  //   },200);
+  // }
   //////////////////// Difficulty Options End here ////////////////////////
 
   ///////////This is the reset function after a game has finished////////////////
@@ -168,7 +168,7 @@ $(() => {
   /// This is for when the player is ready to play, after the difficulty is selected and the play button is clicked - so this starts the game!
   $playGame.on('click', function(){
     console.log(difficulty[winCondition]);
-    difficultyEasy();
+    playGame();
     const interval = setInterval(function(){
       if (winCondition === difficulty.winningCondition) {
         alert('You beat the game this time, can you manage a medium difficutly...?');
@@ -179,7 +179,7 @@ $(() => {
         alert('Game Over, sorry you lost, Booooooo!');
         reset();
       } else{
-        difficultyEasy();
+        playGame();
       }
     },difficulty.interval);
 
