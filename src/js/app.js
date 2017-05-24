@@ -35,7 +35,7 @@ $(() => {
       case 'LOTR':
 
       break;
-      case 'ASIA':
+      case 'CC':
 
       break;
       case 'EPL':

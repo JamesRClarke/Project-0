@@ -12,10 +12,9 @@ header h1 {
   text-align: center;
 }
 main {
-  width: 1400px;
-  height: 1000px;
   margin: 0 auto;
-  margin-top: 150px;
+  margin-top: 200px;
+
   div.features {
     margin: 0 auto;
     border: 3px solid red;
@@ -31,7 +30,7 @@ main {
     input {
      margin: 0 auto;
       text-align: center;
-      width: 500px;
+      width: 50%;
       height: 50px;
       font-size: 40px;
     }
@@ -52,37 +51,37 @@ main {
       }
   }
   div.ag-tetris {
-    color: black;
+    color: white;
     position: relative;
     margin: 0 auto;
     width: 800px;
     height: 550px;
     background-color: black;
     overflow: hidden;
+    font-family: 'Bungee Outline', cursive;
   }
   .anagram {
     position: absolute;
-    top: -50px;
+    top: -20px;
     font-size: 20px;
   }
-  .imageBBT {
-    background: url('http://www.serienjunkies.de/big-bang-theory/big-bang-theory.jpg');
-    background-size: cover;
-  }
-  .imageLOTR {
-    background: url('http://www.serienjunkies.de/big-bang-theory/big-bang-theory.jpg');
-    background-size: cover;
-  }
-  .imageASIA {
-    background: url('http://www.serienjunkies.de/big-bang-theory/big-bang-theory.jpg');
-    background-size: cover;
-  }
-  .imageEPL {
-    background: url('http://www.serienjunkies.de/big-bang-theory/big-bang-theory.jpg');
-    background-size: cover;
-  }
-  .imageWDI {
-    background: url('http://www.serienjunkies.de/big-bang-theory/big-bang-theory.jpg');
-    background-size: cover;
-  }
+  // .imageBBT {
+  //   background: url('http://www.serienjunkies.de/big-bang-theory/big-bang-theory.jpg');
+  //   background-size: cover;
+  // }
+  // .imageLOTR {
+  //   background: url('http://www.serienjunkies.de/big-bang-theory/big-bang-theory.jpg');
+  //   background-size: cover;
+  // }
+  // .imageASIA {
+  //   background: url('http://www.serienjunkies.de/big-bang-theory/big-bang-theory.jpg');
+  //   background-size: cover;
+  // }
+  // .imageEPL {
+  //   background: url('http://www.serienjunkies.de/big-bang-theory/big-bang-theory.jpg');
+  //   background-size: cover;
+  // }
+  // .imageWDI {
+  //   background: url('http://www.serienjunkies.de/big-bang-theory/big-bang-theory.jpg');
+  //   background-size: cover;
 }
