@@ -1,8 +1,6 @@
 $(() => {
   let height = $('.game-box').outerHeight(true);
   let width = $('.game-box').width();
-  console.log(width);
-  console.log(width);
   let lifeScore = 5;
   let winCondition = 0;
   let difficulty = null;
@@ -58,13 +56,21 @@ $(() => {
   ///////////////////Functions that change the word/////////////////////////
   /// This selects a random word from the selected array
   function generateWord() {
-    const index = [Math.floor(Math.random() * selectedSubject.length)];
+    ///This generates a random number within the length of the array, of the subject selected by the user (selectedSubject)and stores its index in a variable
+      const index = [Math.floor(Math.random() *
+   selectedSubject.length)];
+
+    /// This takes the selectedSubject and in the square brackets passes in the index variable so that the number genereated randomly from the length of the array now selects that word and stores it in selectedWord
     const selectedWord = selectedSubject[index];
+
+    /// This takes the selectedSubject and using splice gets rid of the word that was just previously stored in the selectedWord off the array by using its index
     selectedSubject.splice(index, 1);
     return selectedWord;
   }
+
   /// This takes the randomly selected word and shuffles it into an anagram
   function generateAnagram(selectedWord) {
+    /// This is splitting the selectedWord (a string) apart then sorting it a
     return selectedWord.split('').sort(function(){
       return 0.5 - Math.random();
     } ).join('');
@@ -80,12 +86,12 @@ $(() => {
   function anagramHitsTheBottom () {
     $('.anagram').each(function () {
       const position = Math.round($(this).position().top);
-      if (position >= height - 80 ) {
+      if (position >= height - 80) {
         console.log(lifeScore);
-        if(!$(this).hasClass('hinge')) lifeScore -= 1;
+        if(!$(this).hasClass('fadeOutDown')) lifeScore -= 1;
         $lives.html(`Lives Left: ${lifeScore}`);//Not Working
         $(this).css('color','red');
-        $(this).addClass('animated hinge');
+        $(this).addClass('animated fadeOutDown');
         setTimeout(() => {
           $(this).remove();
         },500);
@@ -96,6 +102,7 @@ $(() => {
 
   //////////////////Main fucntion to play game ////////////////////////////
   function playGame (){
+
     console.log(width);
     const selectedWord = generateWord();
     const scrambledWord = generateAnagram(selectedWord);
@@ -124,7 +131,7 @@ $(() => {
       playGame();
       const interval = setInterval(function(){
         if (winCondition === difficulty.winningCondition) {
-          alert('You beat the game this time, can you manage amedium difficutly...?');
+          alert('You beat the game this time, can you manage harder difficutly...?');
           clearInterval(interval);
           reset();
         } else if (lifeScore <= 0){
