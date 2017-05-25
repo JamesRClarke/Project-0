@@ -24,23 +24,35 @@ main {
   h2 {
     color: white;
     font-size: 27px;
+    position: relative;
   }
-  div.features {
+  div.container {
     color: white;
     position: absolute;
     margin: 0 auto;
     border: 3px solid #39FF14;
-    width: 80%;
+    width: 85%;
+    left: 115px;
     height: 850px;
-    left: 150px;
     background-image: url('http://cdn.wallpapersafari.com/31/73/h9LGbE.jpg');
-    background-size:cover;
+    background-size: cover;
+    div.options {
+      position: relative;
+      top: -10px;
+      margin: 0 auto;
+    }
+    div.options h2{
+      position:relative;
+      left: 0px;
+      top: 10px;
+    }
     button#play {
+
+      width: 15%;
       position: absolute;
-      bottom: 25px;
-      left:850px;
+
+      // styling of the button
       font-size: 24px;
-      padding: 20px;
       cursor: pointer;
       text-align: center;
       text-decoration: none;
@@ -49,7 +61,7 @@ main {
       background-color: #39FF14;
       border: none;
       border-radius: 15px;
-      box-shadow: 0 9px #999;
+      box-shadow: 0 6px #999;
     }
     button:active {
       background-color: #3e8e41;
@@ -57,45 +69,42 @@ main {
       transform: translateY(4px);
     }
     input {
+      text-align: center;
       position: absolute;
       margin: 0 auto;
-      text-align: center;
       width: 50%;
-      height: 50px;
+      bottom:28px;
+      left: 25%;
       font-size: 40px;
-      left: 172px;
-      bottom: 25px;
       outline:none;
     }
     input[type=text]:focus {
-      border: 3px solid #4CAF50;
-    }
-    .options h2 {
-      padding-left: 280px;
+      background-color: black;
+      border: 3px solid #39FF14;
+      color: white;
     }
     select#subject-options, select#difficulty-options {
-      position: relative;
-      left: 480px;
-      bottom: 48px;
+      position: absolute;
+      float: left;
     }
-
-  h3#lives, h3#winCondition {
+    select#difficulty-options {
+      bottom: 60px;
+    }
+    h3#lives, h3#winCondition {
     position: absolute;
-    left: 700px;
-    top:  30px;
-  }
-  h3#winCondition {
-    top: 100px;
+    float: right;
   }
 }
-div.ag-tetris {
+div.game-box {
   position: relative;
   color: white;
   margin: 0 auto;
+  top: 60px;
   width: 100%;
   height: 550px;
   background-color: black;
-  border: 2px solid #39FF14;
+  border-top: 2px solid #39FF14;
+  border-bottom: 2px solid #39FF14;
 }
 .anagram {
   position: absolute;
@@ -103,11 +112,19 @@ div.ag-tetris {
   font-size: 30px;
 }
 }
-footer {
-  background-color:#00560e;
-  position: absolute;
-  width: 99.5%;
-  height: 70px;
-  bottom:-1100px;
-
- }
+@media only screen and (max-width: 1000px) {
+  main, div.features, div.game-box, div.options {
+    width: 50%;
+  }
+  .anagram {
+    font-size:20px;
+  }
+}
+@media only screen and (max-width: 640px) {
+  main, div.features, div.game-box, div.options {
+    width: 50%;
+  }
+  .anagram {
+    font-size: 10px;
+  }
+}
