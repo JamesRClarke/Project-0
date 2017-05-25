@@ -14,10 +14,11 @@ $(() => {
   const $container = $('.game-box');
   const categories = {
     BBT: ['sheldon','leanord','spock','cheesecake factory','howard','star trek','penny','koothrapoli','bernadette','physics','laundry','halo night','dumplings', 'brisket','nasa','string theory','dark matter', 'comiccon','comic book'],
-    LOTR: ['arragon', 'gimli','gandalf','legolas','mordor','uruk hai','frodo','golumn','orcs','the shire','baggins','sauron', 'gondor','elves','hobbit','dwarves','two towers','black gate','faramir','saruman','shadowfax','witch king'],
+    LOTR: ['arragorn', 'gimli','gandalf','legolas','mordor','uruk hai','frodo','golumn','orcs','the shire','baggins','sauron', 'gondor','elves','hobbit','dwarves','two towers','black gate','faramir','saruman','shadowfax','witch king'],
     FT: ['arsenal','bournemouth','burnley','brighton','chelsea','crystal palace','everton','liverpool','newcastle','southampton','barcelona','juventus','ajax','bayern'],
     CC: ['vienna','bridgetown','brasilia','brussels','sofia','hanoi','ottowa','bangui','washington','havana','prauge','cairo','helsinki','budapest','jakarta','jerusalem','kingston','tokyo','nairobi','beijing','rabat','oslo','pyongyang','madrid'],
-    WDI: ['function','javascript','switch','refactor','namespacing','jquery','const','primitive','object','array','responsive','constructor','recursive','indentation','iterate','method','algorithim','terminal','github','debugging','loop','variable']
+    WDI: ['function','javascript','switch','refactor','namespacing','jquery','const','primitive','object','array','responsive','constructor','recursive','indentation','iterate','method','algorithim','terminal','github','debugging','loop','variable'],
+    SW: ['css']
   };
   const settings = {
     easy: {
@@ -158,11 +159,10 @@ $(() => {
     });
 
     ///// this changes the height property based on the resizing of the browsers window
-    $('window').on('resize', () => {
-      console.log(width);
+    $(window).on('resize', () => {
       height = $('.game-box').outerHeight(true);
     });
-    $('window').on('resize', () => {
+    $(window).on('resize', () => {
       width = $('.game-box').width();
     });
 

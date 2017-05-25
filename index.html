@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <title>Project 0</title>
-  <meta name="viewport" content="width=device-width">
-<link href="https://fonts.googleapis.com/css?family=Codystar|Faster+One" rel="stylesheet">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="https://fonts.googleapis.com/css?family=Codystar|Faster+One" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
   <script src="https://code.jquery.com/jquery-3.2.1.min.js"
   integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
@@ -20,42 +20,45 @@
       <h3> Welcome to anagram falls....</h3>
       <p>Choose a subject, choose a difficulty then click play...
         <br><br> Anagrams will fall inside the box and its up to you to solve them, within time of course...<br><br>When they get to the bottom they will fall off and you will lose a life, each game you play you get 5 lives, but the higher difficulty you choose the faster they will fall, and, the more anagrams you need to solve...<br><br>No. of anagrams to solve are as follows...<br><br>Easy:   5  <br><br>Medium:   7 <br><br>Hard:   10 <br><br>Insane:   10 </p>Scroll down, and lets play...
-    </div>
-  </header>
-  <main>
-    <div class="container">
+      </div>
+    </header>
+    <main>
+      <div class="container">
+        <div class="options">
+          <div class="left">
+            <h2>Subjects</h2>
+            <select id="subject-options" name="subject-options">
+              <option selected disabled >Please Choose</option>
+              <option value="BBT">Big Bang Theory</option>
+              <option value="LOTR">Lord Of The Rings</option>
+              <option value="FT">Football Teams</option>
+              <option value="CC">Capital Cities</option>
+              <option value="WDI">Web Development</option>
+            </select>
 
+            <h2>Difficulty</h2>
+            <select id="difficulty-options" name="difficulty-options">
+              <option selected disabled>Please Choose</option>
+              <option value="easy">Easy</option>
+              <option value="medium">Medium</option>
+              <option value="hard">Hard</option>
+              <option value="insane">Are You Insane ?</option>
+            </select>
+          </div>
+          <button id="play">PLAY!</button>
+          <div class="right">
+            <h3 id="lives">Lives Left: 5</h3>
+            <h3 id="winCondition">Correct Awnsers: 0 </h3>
+          </div>
 
-      <h3 id="lives">Lives Left: 5</h3>
-      <h3 id="winCondition">Correct Awnsers: 0 </h3>
-      <div class="options">
-        <button id="play">PLAY!</button>
-        <h2>Subjects</h2>
-        <select id="subject-options" name="subject-options">
-          <option selected disabled >Please Choose</option>
-          <option value="BBT">Big Bang Theory</option>
-          <option value="LOTR">Lord Of The Rings</option>
-          <option value="FT">Football Teams</option>
-          <option value="CC">Capital Cities</option>
-          <option value="WDI">Web Development</option>
-        </select>
-
-        <h2>Difficulty</h2>
-        <select id="difficulty-options" name="difficulty-options">
-          <option selected disabled>Please Choose</option>
-          <option value="easy">Easy</option>
-          <option value="medium">Medium</option>
-          <option value="hard">Hard</option>
-          <option value="insane">Are You Insane ?</option>
-        </select>
 
         </div>
         <div class="game-box">
         </div>
         <form>
-            <input id="answer" type="text" >
+          <input id="answer" type="text" >
         </form>
       </div>
-  </main>
-</body>
-</html>
+    </main>
+  </body>
+  </html>
