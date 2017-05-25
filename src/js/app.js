@@ -1,6 +1,7 @@
 $(() => {
   let height = $('.game-box').outerHeight(true);
-  let width = $('.game-box').outerWidth(true);
+  let width = $('.game-box').width();
+  console.log(width);
   console.log(width);
   let lifeScore = 5;
   let winCondition = 0;
@@ -70,7 +71,7 @@ $(() => {
   //////This generates a different element in a differnt position from the HTML
   function generateAnagramElement () {
     const $anagram = $('<p class="anagram"></p>');
-    const left = Math.ceil((Math.random() * width - 200));
+    const left = Math.ceil((Math.random() * (width - 250)));
     $anagram.css({left: left});
     return $anagram;
   }
@@ -94,6 +95,7 @@ $(() => {
 
   //////////////////Main fucntion to play game ////////////////////////////
   function playGame (){
+    console.log(width);
     const selectedWord = generateWord();
     const scrambledWord = generateAnagram(selectedWord);
     const selectedAnagram = generateAnagramElement();
@@ -161,8 +163,7 @@ $(() => {
       height = $('.game-box').outerHeight(true);
     });
     $('window').on('resize', () => {
-      console.log(width);
-      height = $('.game-box').outerWidth(true);
+      width = $('.game-box').width();
     });
 
     ////// end of the DOM;
