@@ -88,7 +88,7 @@ $(() => {
   function anagramHitsTheBottom () {
     $('.anagram').each(function () {
       const position = Math.round($(this).position().top);
-      if (position >= height - 75) {
+      if (position >= height - 85) {
         if(!$(this).hasClass('hinge')) lifeScore -= 1;
         $lives.html(`Lives Left: ${lifeScore}`);
         $(this).css('color','red');
@@ -102,18 +102,18 @@ $(() => {
     ///////////////////Functions that change the word/////////////////////////
 
     //////////////////Main fucntion to play game ////////////////////////////
-    function playGame (){
-      const selectedWord = generateWord();
-      const scrambledWord = generateAnagram(selectedWord);
-      const selectedAnagram = generateAnagramElement();
-      selectedAnagram.text(scrambledWord);
-      selectedAnagram.attr('data-word', selectedWord);
-      $container.append(selectedAnagram);
-      setInterval(function() {
-        selectedAnagram.css('top', '+=10px');
-        anagramHitsTheBottom();
-      },difficulty.speed);
-    }
+  function playGame (){
+    const selectedWord = generateWord();
+    const scrambledWord = generateAnagram(selectedWord);
+    const selectedAnagram = generateAnagramElement();
+    selectedAnagram.text(scrambledWord);
+    selectedAnagram.attr('data-word', selectedWord);
+    $container.append(selectedAnagram);
+    setInterval(function() {
+      selectedAnagram.css('top', '+=10px');
+      anagramHitsTheBottom();
+    },difficulty.speed);
+  }
     ///////This is the reset function after a game has finished////////////////
   function reset () {
     lifeScore = 5;
@@ -150,11 +150,12 @@ $(() => {
     $('.anagram').each(function () {
       const checker = $(this).data('word');
       if ($('#answer').val().toLowerCase() === checker){
-        $(this).addClass('animatedfadeOutUp').css('color','#39FF14');
+        $(this).addClass('animated flipOutY').css('color','#39FF14');
+          $(this).removeClass('animated jello').css('color','#39FF14');
         $winCondition.html(`Correct Answers: ${winCondition =winCondition + 1}`);
         setTimeout(() => {
           $(this).remove();
-        },500);
+        },700);
       } else {
         $('.anagram').addClass('animated jello');
         setTimeout(() => {
