@@ -1,5 +1,5 @@
-#Anagram Falls 
--
+##Anagram Falls 
+
 #### Installation
 
 To run this code you will need to:
@@ -40,7 +40,20 @@ Here is a list of the software and languages used in the project:
 -
 ### Blockers and Obstacles
 
-An obstacle which was necessary to overcome was the validation of t
+An obstacle which was necessary to overcome was the validation of each anagram that is falling. I needed to be able validate and apply styling to correctly solved anagram, and different styling to the other.
+By using `this` I was able to overcome this obstacle.
+
+Another challenege that was key, was working with the height and width of the `div` where the game is played. When making it responsive this caused a lot of issues, however using `.height()` and `.width()` and `window.resize()` I was able to store the pixel value into variables and apply to the working code so responsiveness now does not cause an issue.
+
+-
+### Enhancement and Development
+
+I have compiled a list of advancements I would like to add to my project, these were not worked on due to either timing or simply not knowing how to: 
+
+- adding a high score counter based on length of anagram(s)
+- name spacing the project
+- adding audio to the game based on difficulty e.g. faster tron music the harder the difficulty
+- better styling of the page
 
 
 

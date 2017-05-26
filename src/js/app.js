@@ -151,7 +151,7 @@ $(() => {
       const checker = $(this).data('word');
       if ($('#answer').val().toLowerCase() === checker){
         $(this).addClass('animated flipOutY').css('color','#39FF14');
-          $(this).removeClass('animated jello').css('color','#39FF14');
+        $(this).removeClass('animated jello').css('color','#39FF14');
         $winCondition.html(`Correct Answers: ${winCondition =winCondition + 1}`);
         setTimeout(() => {
           $(this).remove();
