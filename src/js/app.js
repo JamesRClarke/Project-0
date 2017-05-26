@@ -90,7 +90,7 @@ $(() => {
       const position = Math.round($(this).position().top);
       if (position >= height - 75) {
         if(!$(this).hasClass('hinge')) lifeScore -= 1;
-        $lives.html(`Lives Left: ${lifeScore}`);//Not Working
+        $lives.html(`Lives Left: ${lifeScore}`);
         $(this).css('color','red');
         $(this).addClass('animated hinge');
         setTimeout(() => {
@@ -140,7 +140,8 @@ $(() => {
         } else{
           playGame();
         }
-      },difficulty.interval); }
+      },difficulty.interval);
+    }
   });
 
       /// This is the validation when the button is clicked to submit an answer, this also holds the animations applied to the game.

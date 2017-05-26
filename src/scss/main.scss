@@ -37,7 +37,7 @@ main {
     border: 3px solid #39FF14;
     width: 85%;
     max-width: 1400px;
-    background-image: url('https://images3.alphacoders.com/245/thumb-1920-245539.jpg');
+    background-image: src('.images/container-bg.jpg');
     background-size: cover;
     button#play {
       width: 20%;
