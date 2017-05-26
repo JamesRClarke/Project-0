@@ -3,7 +3,11 @@
 }
 body {
   font-family: 'Roboto Mono', monospace;
-  background-color: #152b13;
+  background-color: black;
+  margin-bottom: 0px;
+  background-image: url('https://welshrarebitsbyannabelle.co.uk/wp-content/uploads/2017/01/Black-and-Green-Abstract-Background-HD-Wallpapers.jpg');
+  background-repeat: round;
+  background-size: cover;
 }
 header h1 {
   color: white;
@@ -24,7 +28,7 @@ main {
   position: relative;
   h2 {
     color: white;
-    font-size: 27px;
+    font-size: 25px;
     position: relative;
   }
   div.container {
@@ -33,7 +37,7 @@ main {
     border: 3px solid #39FF14;
     width: 85%;
     max-width: 1400px;
-    background-image: url('http://cdn.wallpapersafari.com/31/73/h9LGbE.jpg');
+    background-image: url('https://images3.alphacoders.com/245/thumb-1920-245539.jpg');
     background-size: cover;
     button#play {
       width: 20%;
@@ -62,7 +66,7 @@ main {
       position: relative;
       margin: 0 auto;
       overflow: hidden;
-      padding: 20px;
+      padding: 18px;
       h2, h3 {
         font-size: 30px;
         margin: 10px 0 20px;
@@ -78,6 +82,7 @@ main {
       .right {
         float: right;
         width: 30%;
+        padding-top:50px;
       }
     }
 
@@ -92,14 +97,13 @@ main {
     width: 100%;
     height: 550px;
     background-color: black;
-    border-top: 2px solid #39FF14;
-    border-bottom: 2px solid #39FF14;
+    border-top: 3px solid #39FF14;
+    border-bottom: 3px solid #39FF14;
     overflow: hidden;
   }
   .anagram {
     position: absolute;
-    top: -30px;
-    font-size: 50px;
+    top: -20px;
   }
   input {
     text-align: center;
@@ -144,5 +148,5 @@ main {
   }
 }
   main .anagram {
-    font-size:25px;
+    font-size: 25px;
   }
