@@ -58,15 +58,12 @@ $(() => {
     ///This generates a random number within the length of the array, of the subject selected by the user (selectedSubject)and stores its index in a variable
     const index = [Math.floor(Math.random() *
       selectedSubject.length)];
-
       /// This takes the selectedSubject and in the square brackets passes in the index variable so that the number genereated randomly from the length of the array now selects that word and stores it in selectedWord
     const selectedWord = selectedSubject[index];
-
       /// This takes the selectedSubject and using splice gets rid of the word that was just previously stored in the selectedWord off the array by using its index
     selectedSubject.splice(index, 1);
     return selectedWord;
   }
-
     /// This takes the randomly selected word and shuffles it into an anagram
   function generateAnagram(selectedWord) {
       /// This is splitting the selectedWord (a string) apart then sorting it a
@@ -143,7 +140,6 @@ $(() => {
       },difficulty.interval);
     }
   });
-
       /// This is the validation when the button is clicked to submit an answer, this also holds the animations applied to the game.
   $('form').on('submit', function (e) {
     e.preventDefault();
@@ -165,7 +161,6 @@ $(() => {
     });
     $('form').trigger('reset');
   });
-
       ///// this changes the height property based on the resizing of the browsers window
   $(window).on('resize', () => {
     height = $('.game-box').outerHeight(true);
@@ -173,5 +168,4 @@ $(() => {
   $(window).on('resize', () => {
     width = $('.game-box').width();
   });
-
 });

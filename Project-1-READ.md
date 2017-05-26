@@ -23,7 +23,7 @@ Here is a screenshot of the instructions of the game
 
 
 Here is a screenshot of the game in action
-
+![Game Play](Development/Project-0/src/images/game-play.png)
 -
 ### Software and Languages 
 
