@@ -11,7 +11,7 @@ To run this code you will need to:
 > **Note**: You'll need to have `gulp-cli` installed globally
 > `npm i -g gulp-cli`
 
--
+
 ### The Project
 
 This project was to build a working game which invlolved a certain level of creativity and complexity.
