@@ -19,13 +19,13 @@ The game needed to involve a winning condition.
 
 The game I created was insipired by tetris and mixed with my liking of problem soloving, so using anagrams was a good way to merge the two.
 
-<!--Here is a screenshot of the instructions of the game
+<!--Here is a screenshot of the instructions of the game-->
 
 
-Here is a screenshot of the game in action
+<!--Here is a screenshot of the game in action
 ![Game Play](./Project-0/src/images/game-play.png)-->
 
--
+
 ### Software and Languages 
 
 Here is a list of the software and languages used in the project:
@@ -38,7 +38,7 @@ Here is a list of the software and languages used in the project:
 - NPM
 - Git & GitHub
 
--
+
 ### Blockers and Obstacles
 
 An obstacle which was necessary to overcome was the validation of each anagram that is falling. I needed to be able validate and apply styling to correctly solved anagram, and different styling to the other.
@@ -46,7 +46,7 @@ By using `this` I was able to overcome this obstacle.
 
 Another challenege that was key, was working with the height and width of the `div` where the game is played. When making it responsive this caused a lot of issues, however using `.height()` and `.width()` and `window.resize()` I was able to store the pixel value into variables and apply to the working code so responsiveness now does not cause an issue.
 
--
+
 ### Enhancement and Development
 
 I have compiled a list of advancements I would like to add to my project, these were not worked on due to either timing or simply not knowing how to: 
