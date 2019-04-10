@@ -17,7 +17,7 @@ $(() => {
     CC: ['vienna','bridgetown','brasilia','brussels','sofia','hanoi','ottowa','bangui','washington','havana','prague','cairo','helsinki','budapest','jakarta','jerusalem','kingston','tokyo','nairobi','beijing','rabat','oslo','pyongyang','madrid'],
     WDI: ['function','javascript','switch','refactor','namespacing','jquery','const','primitive','object','array','responsive','constructor','recursive','indentation','iterate','method','algorithim','terminal','github','debugging','loop','variable'],
     SW: ['css'],
-    AG: ['kath', 'jake moore', 'rolls royce', 'fucking geoff', 'pod', 'robinson', 'nat yeo', 'xcina', 'knowlesey', 'tinder', 'petit blue', 'investment', 'thomson reuters', ' moorhouse', 'pizza pilgrim', 'pdog', 'ewelina', 'workflow', '10am stand up', 'tea cakes', 'momentum', 'james', 'harrison', 'kiddie fiddler', 'we love soup']
+    AG: ['kath', 'jake moore', 'rolls royce', 'fucking geoff', 'pod', 'robinson', 'nat yeo', 'xcina', 'knowlesey', 'tinder', 'petit blue', 'investment', 'thomson reuters', ' moorhouse', 'pizza pilgrim', 'pdog', 'ewelina', 'workflow', '10am stand up', 'tea cakes', 'momentum', 'james', 'harrison', 'kiddie fiddler', 'we love soup', 'fuckoffee', 'jesus ruby', 'roger the dodger']
   };
   const settings = {
     easy: {
