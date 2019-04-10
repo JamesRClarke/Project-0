@@ -15,8 +15,10 @@ $(() => {
     LOTR: ['arragorn', 'gimli','gandalf','legolas','mordor','uruk hai','frodo','golumn','orcs','the shire','baggins','sauron', 'gondor','elves','hobbit','dwarves','two towers','black gate','faramir','saruman','shadowfax','witch king'],
     FT: ['arsenal','bournemouth','burnley','brighton','chelsea','crystal palace','everton','liverpool','newcastle','southampton','barcelona','juventus','ajax','bayern'],
     CC: ['vienna','bridgetown','brasilia','brussels','sofia','hanoi','ottowa','bangui','washington','havana','prague','cairo','helsinki','budapest','jakarta','jerusalem','kingston','tokyo','nairobi','beijing','rabat','oslo','pyongyang','madrid'],
-    WDI: ['function','javascript','switch','refactor','namespacing','jquery','const','primitive','object','array','responsive','constructor','recursive','indentation','iterate','method','algorithim','terminal','github','debugging','loop','variable'],
-    AMG: ['kath', 'jake moore', 'rolls royce', 'fucking geoff', 'pod', 'robinson', 'nat yeo', 'xcina', 'knowlesey', 'tinder', 'petit blue', 'investment', 'thomson reuters', ' moorhouse', 'pizza pilgrim', 'pdog', 'ewelina', 'workflow', '10am stand up', 'tea cakes', 'momentum', 'james', 'harrison', 'kiddie fiddler', 'we love soup', 'fuckoffee', 'jesus ruby', 'roger the dodger']
+    AMG:
+    ['kath','jake moore','rolls royce','fucking geoff','pod','robinson','nat yeo','xcina','knowlesey','tinder','petit blue','investment','thomson reuters',' moorhouse','pizza pilgrim','pdog','ewelina','workflow','10am stand up','tea cakes','momentum','james','harrison','kiddie fiddler','we love soup','fuckoffee','jesus ruby','roger the dodger'],
+    WDI: ['function','javascript','switch','refactor','namespacing','jquery','const','primitive','object','array','responsive','constructor','recursive','indentation','iterate','method','algorithim','terminal','github','debugging','loop','variable']
+
   };
   const settings = {
     easy: {
@@ -43,7 +45,7 @@ $(() => {
   ////////////////////Selectors///////////////////////////
   let selectedDifficulty = '';
   let selectedSubject = '';
-  $subjectOptions.on('change', () => {
+  $subjectOptions.on('change',() => {
     const value = $subjectOptions.val();
     selectedSubject = categories[value];
   });
