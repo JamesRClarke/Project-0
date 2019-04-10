@@ -120,12 +120,13 @@ main {
   // main, div.features, div.game-box, div.options {
   //   width: 75%;
   // }
-  main {
-    header {
-        h1 {
-      font-size: 10px;
-    }
+  header {
+      h1 {
+        font-family: 'Faster One', cursive;
+        font-size: 50px;
   }
+}
+  main {
     div.container {
       button#play {
         position: static;
@@ -144,6 +145,3 @@ main {
     }
   }
 }
-  main .anagram {
-    font-size: 25px;
-  }

@@ -19,11 +19,12 @@ The game needed to involve a winning condition.
 
 The game I created was insipired by tetris and mixed with my liking of problem soloving, so using anagrams was a good way to merge the two.
 
-Here is a screenshot of the instructions of the game
+<!--Here is a screenshot of the instructions of the game
 
 
 Here is a screenshot of the game in action
-![Game Play](Development/Project-0/src/images/game-play.png)
+![Game Play](./Project-0/src/images/game-play.png)-->
+
 -
 ### Software and Languages 
 
