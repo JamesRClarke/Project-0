@@ -18,7 +18,8 @@ $(() => {
     AMG:
     ['kath','jake moore','rolls royce','fucking geoff','pod','robinson','nat yeo','xcina','knowlesey','tinder','petit blue','investment','thomson reuters',' moorhouse','pizza pilgrim','pdog','ewelina','workflow','10am stand up','tea cakes','momentum','james','harrison','kiddie fiddler','we love soup','fuckoffee','jesus ruby','roger the dodger'],
     WDI: ['function','javascript','switch','refactor','namespacing','jquery','const','primitive','object','array','responsive','constructor','recursive','indentation','iterate','method','algorithim','terminal','github','debugging','loop','variable'],
-    BBM: ['the dark knight','inception','the shawshank redemption','mission impossible','fast & furious', 'american pie','the sounds of the wind','avatar','titanic','toy story','spider man','mary poppins','the lion kings','101 dalmatians','my fair lady','pride and prejudice','romeo and juliet','bohemian rhapsody','matilda','home alone','doctor zhivago','the excorcist']
+    BBM: ['the dark knight','inception','the shawshank redemption','mission impossible','fast & furious', 'american pie','the sounds of the wind','avatar','titanic','toy story','spider man','mary poppins','the lion kings','101 dalmatians','my fair lady','pride and prejudice','romeo and juliet','bohemian rhapsody','matilda','home alone','doctor zhivago','the excorcist'],
+    ANM: ['elephant','parrot','tiger','alpaca','alligator', 'cockroach','cuttlefish','gecko','hedgehog','hummingbird','siberian husky','monkey','turtle','manta ray','kangaroo','rhinoceros','komodo dragon','platypus','porcupine','raccoon','rattlesnake','tasmanian devil','wildebeest','woodlouse','wallaby','penguin','dolphin','snake','mouse','dachshund','dalmatian','eagle','aardvark','ladybird','manatee','giraffe']
 
   };
   const settings = {
@@ -61,17 +62,34 @@ $(() => {
   function generateWord() {
     const index = [Math.floor(Math.random() *
       selectedSubject.length)];
-    const selectedWord = selectedSubject[index];
-    selectedSubject.splice(index, 1);
-    return selectedWord;
-  }
+      const selectedWord = selectedSubject[index];
+      selectedSubject.splice(index, 1);
+      return selectedWord;
+    }
     /// This takes the randomly selected word and shuffles it into an anagram
-      function generateAnagram(selectedWord) {
+    function generateAnagram(selectedWord) {
       /// This is splitting the selectedWord (a string) apart then sorting it a
+      if(/\s/.test(selectedWord)) {
+        var firstWord = selectedWord.split(' ')[0];
+        var secondWord = selectedWord.split(' ')[1];
+
+        firstWord = firstWord.split('').sort(function() {
+          return 0.5 - Math.random();
+        }).join('');
+        secondWord = secondWord.split('').sort(function() {
+          return 0.5 - Math.random();
+        }).join('');
+
+        selectedWord = firstWord + " " + secondWord;
+        console.log(selectedWord);
+        return selectedWord;
+
+      } else {
         return selectedWord.split('').sort(function(){
           return 0.5 - Math.random();
         } ).join('');
       }
+    }
     //////This generates a different element in a differnt position from the HTML
     function generateAnagramElement () {
       const $anagram = $('<p class="anagram"></p>');
