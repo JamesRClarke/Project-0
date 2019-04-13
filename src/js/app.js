@@ -19,7 +19,8 @@ $(() => {
     ['kath','jake moore','rolls royce','fucking geoff','pod','robinson','nat yeo','xcina','knowlesey','tinder','petit blue','investment','thomson reuters',' moorhouse','pizza pilgrim','pdog','ewelina','workflow','10am stand up','tea cakes','momentum','james','harrison','kiddie fiddler','we love soup','fuckoffee','jesus ruby','roger the dodger'],
     WDI: ['function','javascript','switch','refactor','namespacing','jquery','const','primitive','object','array','responsive','constructor','recursive','indentation','iterate','method','algorithim','terminal','github','debugging','loop','variable'],
     BBM: ['the dark knight','inception','the shawshank redemption','mission impossible','fast & furious', 'american pie','the sounds of the wind','avatar','titanic','toy story','spider man','mary poppins','the lion kings','101 dalmatians','my fair lady','pride and prejudice','romeo and juliet','bohemian rhapsody','matilda','home alone','doctor zhivago','the excorcist'],
-    ANM: ['elephant','parrot','tiger','alpaca','alligator', 'cockroach','cuttlefish','gecko','hedgehog','hummingbird','siberian husky','monkey','turtle','manta ray','kangaroo','rhinoceros','komodo dragon','platypus','porcupine','raccoon','rattlesnake','tasmanian devil','wildebeest','woodlouse','wallaby','penguin','dolphin','snake','mouse','dachshund','dalmatian','eagle','aardvark','ladybird','manatee','giraffe']
+    ANM: ['elephant','parrot','tiger','alpaca','alligator', 'cockroach','cuttlefish','gecko','hedgehog','hummingbird','siberian husky','monkey','turtle','manta ray','kangaroo','rhinoceros','komodo dragon','platypus','porcupine','raccoon','rattlesnake','tasmanian devil','wildebeest','woodlouse','wallaby','penguin','dolphin','snake','mouse','dachshund','dalmatian','eagle','aardvark','ladybird','manatee','giraffe'],
+    PED: []
 
   };
   const settings = {
@@ -81,7 +82,6 @@ $(() => {
         }).join('');
 
         selectedWord = firstWord + " " + secondWord;
-        console.log(selectedWord);
         return selectedWord;
 
       } else {
