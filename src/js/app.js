@@ -76,11 +76,11 @@ $(() => {
       for(var i = 0; i <= numberOfWords - 1; i++) {
         var word = selectedWord.split(' ')[i];
         word = word.split('').sort(() => {
-          return 0.3 - Math.random();
+          return 0.5 - Math.random();
         }).join('') + ' ';
         anagramGenerated = anagramGenerated + word;
       }
-      return anagramGenerated
+      return anagramGenerated;
     }
     //////This generates a different element in a differnt position from the HTML
     function generateAnagramElement () {
