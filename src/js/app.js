@@ -20,7 +20,8 @@ $(() => {
     WDI: ['function','javascript','switch','refactor','namespacing','jquery','const','primitive','object','array','responsive','constructor','recursive','indentation','iterate','method','algorithim','terminal','github','debugging','loop','variable'],
     BBM: ['the dark knight','inception','the shawshank redemption','mission impossible','fast & furious', 'american pie','the sounds of the wind','avatar','titanic','toy story','spider man','mary poppins','the lion kings','101 dalmatians','my fair lady','pride and prejudice','romeo and juliet','bohemian rhapsody','matilda','home alone','doctor zhivago','the excorcist'],
     ANM: ['elephant','parrot','tiger','alpaca','alligator', 'cockroach','cuttlefish','gecko','hedgehog','hummingbird','siberian husky','monkey','turtle','manta ray','kangaroo','rhinoceros','komodo dragon','platypus','porcupine','raccoon','rattlesnake','tasmanian devil','wildebeest','woodlouse','wallaby','penguin','dolphin','snake','mouse','dachshund','dalmatian','eagle','aardvark','ladybird','manatee','giraffe'],
-    PED: []
+    TUBE: ['acton town','acton central','aldgate', 'aldgate east', 'alperton','amersham','angel','amersham','angel','archway', 'arnos grove','arsenal','baker street','balham','bank','barbican','barking','barkingside','barons court','bayswater','becontree','belsize park','bermondsey','bethnal green','blackfriars','blackhorse road','bond street','borough','boston manor','bounds green','bow road','brent cross','brixton','bromley by bow', 'brondesbury','brondesbury park','buckhurst hill','burnt oak','caledonian road','camden road','camden town','canada water','canary wharf','cannon street','canonbury','canons park','chalfont & latimer'],
+    TEST: ['caledonian road & barnesbury','anagram']
 
   };
   const settings = {
@@ -70,25 +71,16 @@ $(() => {
     /// This takes the randomly selected word and shuffles it into an anagram
     function generateAnagram(selectedWord) {
       /// This is splitting the selectedWord (a string) apart then sorting it a
-      if(/\s/.test(selectedWord)) {
-        var firstWord = selectedWord.split(' ')[0];
-        var secondWord = selectedWord.split(' ')[1];
-
-        firstWord = firstWord.split('').sort(function() {
-          return 0.5 - Math.random();
-        }).join('');
-        secondWord = secondWord.split('').sort(function() {
-          return 0.5 - Math.random();
-        }).join('');
-
-        selectedWord = firstWord + " " + secondWord;
-        return selectedWord;
-
-      } else {
-        return selectedWord.split('').sort(function(){
-          return 0.5 - Math.random();
-        } ).join('');
+      var numberOfWords = selectedWord.split(' ').length;
+      var anagramGenerated = '';
+      for(var i = 0; i <= numberOfWords - 1; i++) {
+        var word = selectedWord.split(' ')[i];
+        word = word.split('').sort(() => {
+          return 0.3 - Math.random();
+        }).join('') + ' ';
+        anagramGenerated = anagramGenerated + word;
       }
+      return anagramGenerated
     }
     //////This generates a different element in a differnt position from the HTML
     function generateAnagramElement () {
